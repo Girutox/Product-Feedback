@@ -1,3 +1,4 @@
+import BoardFiltersCard from '../../components/board/BoardFiltersCard'
 import BoardWelcomeCard from '../../components/board/BoardWelcomeCard'
 import Suggestions from '../../components/suggestions/Suggestions'
 
@@ -8,6 +9,7 @@ const Home = () => {
     <>
       <header>
         <BoardWelcomeCard />
+        <BoardFiltersCard />
       </header>
       <main>
         <Suggestions />
