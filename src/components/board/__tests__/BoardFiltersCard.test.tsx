@@ -4,10 +4,12 @@ import { render, screen } from '@testing-library/react'
 import BoardFiltersCard from '../BoardFiltersCard'
 
 describe('BoardFiltersCard', () => {
-  it('should render the component with an "All" filter option', () => {
+  it('should render with an "All" badge option', () => {
     render(<BoardFiltersCard />)
 
-    expect(screen.getByText('All')).toBeInTheDocument()
+    const childElement = screen.getByText('All')
+
+    expect(childElement).toHaveClass('badge_container')
   })
 
   it('should render with default card class', () => {
