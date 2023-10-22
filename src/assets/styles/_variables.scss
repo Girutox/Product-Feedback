@@ -1,0 +1,51 @@
+@import url('https://fonts.googleapis.com/css2?family=Jost:wght@400;600;700&display=swap');
+
+// fonts
+$base-font: 'Jost', sans-serif;
+
+// colors
+$primary: #ad1fea !default;
+$secondary: #4661e6 !default;
+
+$info: #373F68 !default;
+$info-light: #3A4374 !default;
+$info-lighter: #647196 !default;
+
+$neutral: #F2F4FF !default;
+$neutral-light: #F7F8FD !default;
+
+$marker: #F49F85 !default;
+$marker-light: #62BCFA !default;
+
+$warning: #D73737 !default;
+$warning-light: #E98888 !default;
+
+$white: #fff !default;
+$black: #0c0e16 !default;
+
+// color palette
+$colors: (
+	"primary": $primary,
+	"secondary": $secondary,
+	"white": $white,
+	"black": $black,
+);
+
+// font sizes
+$base-font-size: 1rem !default;
+$font-size-xs: $base-font-size * 0.875 !default;
+$font-size-sm: $base-font-size * 1.125 !default;
+$font-size-lg: $base-font-size * 1.25 !default;
+$font-size-xl: $base-font-size * 1.5 !default;
+$font-size-xxl: $base-font-size * 3 !default;
+
+// spacing
+$base-padding: 1.5rem !default;
+$base-margin: 1.5rem !default;
+
+// borders
+$base-border-thickness: 1px !default;
+$base-border-radius: 5px !default;
+
+// box-shadow
+$base-box-shadow: 1px 3px 5px rgb(0 0 0 / 10%) !default;
