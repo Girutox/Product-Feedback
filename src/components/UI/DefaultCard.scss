@@ -1,0 +1,8 @@
+.default-card_container {
+  @include default-card;
+}
+
+.bg-custom-faded {
+  background-image: url('../../assets/images/suggestions/desktop/background-header.png');
+  background-repeat: no-repeat;
+}
