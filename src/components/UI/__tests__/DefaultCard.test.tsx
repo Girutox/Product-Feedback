@@ -3,7 +3,7 @@ import DefaultCard from '../DefaultCard';
 import { render } from '@testing-library/react';
 
 describe('DefaultCard', () => {
-  it('should render the component', () => {
+  it('should render the component with child element', () => {
     const component = render(<DefaultCard>
       <div>Test</div>
     </DefaultCard>);
