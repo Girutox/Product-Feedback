@@ -57,6 +57,14 @@ describe('BoardFiltersCard', () => {
 
     const childElement = screen.getByText('All')
 
-    expect(childElement.parentElement).toHaveClass('default-card_container')
-  })    
+    expect(childElement.parentElement?.parentElement).toHaveClass('default-card_container')
+  })
+
+  it('should render with container class for elements', () => {
+    render(<BoardFiltersCard />)
+
+    const childElement = screen.getByText('All')
+
+    expect(childElement.parentElement).toHaveClass('board-filters-card_container')
+  })
 })
