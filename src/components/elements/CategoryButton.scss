@@ -1,3 +1,15 @@
 .category-button {
+  background-color: $neutral;
+  color: $secondary;
+  border-radius: 10px;
+  @include body3;
 
+  &--active {
+    background-color: $secondary;
+    color: $white;
+  }
+
+  &:hover {
+    background-color: $info-lighter;
+  }
 }

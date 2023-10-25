@@ -1,11 +1,14 @@
 import './CategoryButton.scss'
 
 type CategoryButtonProps = {
-  text: string
+  text: string,
+  isActive?: boolean
 }
 
-const CategoryButton = ({ text }: CategoryButtonProps) => {
-  return <button className='category-button'>
+const CategoryButton = ({ text, isActive }: CategoryButtonProps) => {
+  const buttonClasses = isActive ? 'category-button--active' : ''
+
+  return <button className={`category-button ${buttonClasses}`}>
     {text}
   </button>
 }

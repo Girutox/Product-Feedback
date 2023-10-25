@@ -1,5 +1,10 @@
 @mixin default-card {
   border-radius: $base-border-radius;
-  box-shadow: $base-box-shadow;
   padding: $base-padding;
+}
+
+@mixin body3 {
+  font-size: $font-size-sm;
+  line-height: 19px;
+  font-weight: 600;
 }

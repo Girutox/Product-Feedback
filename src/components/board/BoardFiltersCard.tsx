@@ -3,7 +3,7 @@ import CategoryButton from '../elements/CategoryButton'
 
 const BoardFiltersCard = () => {
   return <DefaultCard>
-    <CategoryButton text='All' />
+    <CategoryButton text='All' isActive />
     <CategoryButton text='UI' />
     <CategoryButton text='UX' />
     <CategoryButton text='Enhancement' />
