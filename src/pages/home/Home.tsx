@@ -7,7 +7,7 @@ import './Home.scss'
 const Home = () => {
   return (
     <>
-      <header>
+      <header className='home_header'>
         <BoardWelcomeCard />
         <BoardFiltersCard />
       </header>

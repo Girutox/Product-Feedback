@@ -12,7 +12,8 @@ $info-light: #3A4374 !default;
 $info-lighter: #647196 !default;
 
 $neutral: #F2F4FF !default;
-$neutral-light: #F7F8FD !default;
+$neutral-light: #CFD7FF !default;
+$neutral-lighter: #F7F8FD !default;
 
 $marker: #F49F85 !default;
 $marker-light: #62BCFA !default;
@@ -32,6 +33,7 @@ $colors: (
 	"info-lighter": $info-lighter,
 	"neutral": $neutral,
 	"neutral-light": $neutral-light,
+	"neutral-lighter": $neutral-lighter,
 	"marker": $marker,
 	"marker-light": $marker-light,
 	"warning": $warning,
@@ -41,12 +43,12 @@ $colors: (
 );
 
 // font sizes
-$base-font-size: 1rem !default;
-$font-size-xs: $base-font-size * 0.875 !default;
-$font-size-sm: $base-font-size * 1.125 !default;
-$font-size-lg: $base-font-size * 1.25 !default;
-$font-size-xl: $base-font-size * 1.5 !default;
-$font-size-xxl: $base-font-size * 3 !default;
+$base-font-size: 1rem !default; // 16px
+$font-size-xs: $base-font-size * 0.875 !default; // 14px
+$font-size-sm: $base-font-size * 1.125 !default; // 18px
+$font-size-lg: $base-font-size * 1.25 !default; // 20px
+$font-size-xl: $base-font-size * 1.5 !default; // 24px
+$font-size-xxl: $base-font-size * 3 !default; // 48px
 
 // spacing
 $base-padding: 1.5rem !default;
