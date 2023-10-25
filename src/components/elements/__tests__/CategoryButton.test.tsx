@@ -1,5 +1,6 @@
 import { render, screen } from '@testing-library/react'
 import { describe, it, expect } from 'vitest'
+import userEvent from '@testing-library/user-event'
 import CategoryButton from '../CategoryButton'
 
 describe('CategoryButton', () => {
@@ -33,5 +34,15 @@ describe('CategoryButton', () => {
     render(<CategoryButton text={text} isActive={false} />)
 
     expect(screen.getByText(text)).not.toHaveClass('category-button--active')
+  })
+
+  it('should set the active class when clicked', async () => {
+    const text = 'All'
+
+    render(<CategoryButton text={text} />)
+
+    expect(screen.getByText(text)).not.toHaveClass('category-button--active')
+    await userEvent.click(screen.getByText(text))
+    expect(screen.getByText(text)).toHaveClass('category-button--active')
   })
 })

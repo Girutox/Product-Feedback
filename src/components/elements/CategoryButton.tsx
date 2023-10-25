@@ -1,3 +1,5 @@
+import { useState } from 'react'
+
 import './CategoryButton.scss'
 
 type CategoryButtonProps = {
@@ -6,11 +8,21 @@ type CategoryButtonProps = {
 }
 
 const CategoryButton = ({ text, isActive }: CategoryButtonProps) => {
-  const buttonClasses = isActive ? 'category-button--active' : ''
+  const [active, setActive] = useState(isActive)
 
-  return <button className={`category-button ${buttonClasses}`}>
-    {text}
-  </button>
+  const buttonClasses = active ? 'category-button--active' : ''
+
+  const clickHandler = () => {
+    setActive(true)
+  }
+
+  return (
+    <button
+      className={`category-button ${buttonClasses}`}
+      onClick={clickHandler}>
+      {text}
+    </button>
+  )
 }
 
 export default CategoryButton

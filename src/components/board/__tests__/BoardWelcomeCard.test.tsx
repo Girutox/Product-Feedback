@@ -18,4 +18,12 @@ describe('BoardWelcomeCard', () => {
 
     expect(childElement.parentElement).toHaveClass('default-card_container')
   })
+
+  it('should render hamburguer icon/option', () => {
+    render(<BoardWelcomeCard />)
+
+    const childElement = screen.getByRole('heading', { name: 'Frontend Mentor', level: 2 })
+
+    expect(childElement.parentElement).toHaveClass('default-card_container')
+  })
 })
