@@ -16,14 +16,22 @@ describe('BoardWelcomeCard', () => {
 
     const childElement = screen.getByRole('heading', { name: 'Frontend Mentor', level: 2 })
 
-    expect(childElement.parentElement).toHaveClass('default-card_container')
+    expect(childElement.parentElement?.parentElement?.parentElement).toHaveClass('default-card_container')
   })
 
-  it('should render hamburguer icon/option', () => {
+  it('should render with custom card container class', () => {
     render(<BoardWelcomeCard />)
 
     const childElement = screen.getByRole('heading', { name: 'Frontend Mentor', level: 2 })
 
-    expect(childElement.parentElement).toHaveClass('default-card_container')
+    expect(childElement.parentElement?.parentElement).toHaveClass('board-welcome-card_container')
   })
+
+  // it('should render hamburguer icon/option', () => {
+  //   render(<BoardWelcomeCard />)
+
+  //   const childElement = screen.getByRole('heading', { name: 'Frontend Mentor', level: 2 })
+
+  //   expect(childElement.parentElement).toHaveClass('default-card_container')
+  // })
 })

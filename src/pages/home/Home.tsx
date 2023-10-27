@@ -1,4 +1,5 @@
 import BoardFiltersCard from '../../components/board/BoardFiltersCard'
+import BoardRoadMapCard from '../../components/board/BoardRoadMapCard'
 import BoardWelcomeCard from '../../components/board/BoardWelcomeCard'
 import Suggestions from '../../components/suggestions/Suggestions'
 
@@ -10,6 +11,7 @@ const Home = () => {
       <header className='home_header'>
         <BoardWelcomeCard />
         <BoardFiltersCard />
+        <BoardRoadMapCard />
       </header>
       <main>
         <Suggestions />

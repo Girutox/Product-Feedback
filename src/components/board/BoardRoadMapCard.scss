@@ -1,0 +1,11 @@
+.board-roadmap-card_heading {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 24px;
+}
+
+.board-roadmap-card_items {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}

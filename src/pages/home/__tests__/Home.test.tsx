@@ -10,4 +10,12 @@ describe('Home', () => {
 
     expect(header).toHaveClass('home_header')
   })
+
+  it('should render with 3 main cards (welcome, filters and roadmap)', () => {
+    const {container} = render(<Home />)
+
+    expect(container.querySelector('.board-welcome-card_container')).not.toBeNull()
+    expect(container.querySelector('.board-filters-card_container')).not.toBeNull()
+    expect(container.querySelector('.board-roadmap-card_heading')).not.toBeNull()
+  })
 })

@@ -1,0 +1,27 @@
+.status-counter_container {
+  display: flex;
+  justify-content: space-between 
+}
+
+.status-counter_list-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.status-counter_list-item_circle {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%
+}
+
+.status-counter_list-item_text {
+  @include body1;
+  color: $info-lighter;
+}
+
+.status-counter_number {
+  @include body1;
+  font-weight: 700;
+  color: $info-lighter;
+}
