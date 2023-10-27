@@ -2,6 +2,8 @@ import { BACKGROUND_VARIANTS } from '../../models/defaultCard'
 import DefaultCard from '../UI/DefaultCard'
 // import HamburguerIcon from '../../assets/images/shared/mobile/icon-hamburger.svg'
 
+import './BoardWelcomeCard.scss'
+
 const BoardWelcomeCard = () => {
   return <DefaultCard backgroundVariant={BACKGROUND_VARIANTS.FADED}>
     <div className='board-welcome-card_container'>

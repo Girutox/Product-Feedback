@@ -1,6 +1,9 @@
-.board-welcome-card_container {
+.default-card_container.bg-custom-faded {
   display: flex;
-  justify-content: space-between;
+}
+
+.board-welcome-card_container {
+  align-self: end;
 }
 
 .board-welcome-card_subtitle {
