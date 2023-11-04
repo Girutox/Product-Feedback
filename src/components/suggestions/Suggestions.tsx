@@ -1,5 +1,12 @@
+import SuggestionsToolbar from './SuggestionsToolbar'
+
 const Suggestions = () => {
-  return <div></div>
+  return (
+    <>
+      <SuggestionsToolbar />
+      <section aria-label="Suggestions main content"></section>
+    </>
+  )
 }
 
 export default Suggestions

@@ -1,0 +1,19 @@
+.button {
+  padding: 11px 24px;
+  border-radius: $base-border-radius * 1.8;
+  font-size: $font-size-xs;
+  font-weight: 700;
+  line-height: 20.23px;
+  height: 44px;
+
+  transition: background-color 0.10s ease;
+}
+
+.button-primary {
+  background-color: $primary;
+  color: $white;
+
+  &:hover {
+    background-color: #C75AF6;
+  }
+}

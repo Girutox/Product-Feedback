@@ -4,10 +4,19 @@
 	padding: 0;
 }
 
+#root {
+	width: 78.79%;
+	margin: 0 auto;
+
+	display: flex;
+	flex-direction: row;
+	gap: 30px;
+}
+
 html,
 body {
 	max-width: 100vw;
-	overflow-x: hidden;
+	// overflow-x: hidden;
 	font-family: $base-font;
 	font-size: $base-font-size;
 	font-weight: 400;

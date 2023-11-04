@@ -1,0 +1,14 @@
+.suggestions-toolbar_container {
+  background-color: $info;
+  color: $white;
+  border-radius: $base-border-radius;
+  padding: 14px;
+
+  display: flex;
+  align-items: center;
+  gap: 16px;
+}
+
+.suggestions-toolbar_sort-by {
+  flex-grow: 1;
+}

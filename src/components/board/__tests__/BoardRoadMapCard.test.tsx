@@ -36,6 +36,6 @@ describe('BoardRoadMapCard', () => {
 
     const statusItem = screen.getByText('Planned')
 
-    expect(statusItem.parentElement?.parentElement?.parentElement).toHaveClass('board-roadmap-card_item')
+    expect(statusItem.parentElement?.parentElement?.parentElement).toHaveClass('board-roadmap-card_items')
   })
 })
