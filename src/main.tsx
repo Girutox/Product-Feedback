@@ -3,6 +3,13 @@ import App from './App.tsx'
 
 import './assets/styles/index.scss'
 
-ReactDOM.createRoot(document.getElementById('root')!).render(
-  <App />
-)
+async function deferRender() {
+  const { worker } = await import('./mocks/browser')
+  return worker.start()
+}
+
+deferRender().then(() => {
+  ReactDOM.createRoot(document.getElementById('root')!).render(
+    <App />
+  )
+})
