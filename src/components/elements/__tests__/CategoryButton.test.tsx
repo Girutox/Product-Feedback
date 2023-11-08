@@ -7,7 +7,7 @@ describe('CategoryButton', () => {
   it('should render with specified text', () => {
     const text = 'All'
 
-    render(<CategoryButton text={text} />)
+    render(<CategoryButton>{text}</CategoryButton>)
 
     expect(screen.getByText(text)).toBeInTheDocument()
   })
@@ -15,7 +15,7 @@ describe('CategoryButton', () => {
   it('should render with default class', () => {
     const text = 'All'
 
-    render(<CategoryButton text={text} />)
+    render(<CategoryButton>{text}</CategoryButton>)
 
     expect(screen.getByText(text)).toHaveClass('category-button')
   })
@@ -23,7 +23,7 @@ describe('CategoryButton', () => {
   it('should render with active class when isActive prop is true', () => {
     const text = 'All'
 
-    render(<CategoryButton text={text} isActive />)
+    render(<CategoryButton isActive={true}>{text}</CategoryButton>)
 
     expect(screen.getByText(text)).toHaveClass('category-button--active')
   })
@@ -31,7 +31,7 @@ describe('CategoryButton', () => {
   it('should render without active class when isActive prop is false', () => {
     const text = 'All'
 
-    render(<CategoryButton text={text} isActive={false} />)
+    render(<CategoryButton isActive={false}>{text}</CategoryButton>)
 
     expect(screen.getByText(text)).not.toHaveClass('category-button--active')
   })
@@ -39,7 +39,7 @@ describe('CategoryButton', () => {
   it('should set the active class when clicked', async () => {
     const text = 'All'
 
-    render(<CategoryButton text={text} />)
+    render(<CategoryButton>{text}</CategoryButton>)
 
     expect(screen.getByText(text)).not.toHaveClass('category-button--active')
     await userEvent.click(screen.getByText(text))

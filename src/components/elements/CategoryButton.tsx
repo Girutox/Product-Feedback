@@ -3,14 +3,15 @@ import { useState } from 'react'
 import './CategoryButton.scss'
 
 type CategoryButtonProps = {
-  text: string,
-  isActive?: boolean
+  isActive?: boolean,
+  children: string,
 }
 
-const CategoryButton = ({ text, isActive }: CategoryButtonProps) => {
+const CategoryButton = ({ children, isActive }: CategoryButtonProps) => {
   const [active, setActive] = useState(isActive)
 
   const buttonClasses = active ? 'category-button--active' : ''
+  const buttonText = children.length ? `${children[0].toUpperCase()}${children.substring(1)}` : children
 
   const clickHandler = () => {
     setActive(true)
@@ -20,7 +21,7 @@ const CategoryButton = ({ text, isActive }: CategoryButtonProps) => {
     <button
       className={`category-button ${buttonClasses}`}
       onClick={clickHandler}>
-      {text}
+      {buttonText}
     </button>
   )
 }

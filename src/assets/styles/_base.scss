@@ -56,14 +56,13 @@ h4 {
 	letter-spacing: -0.2px;
 }
 
+span {
+	font-family: $base-font;
+}
+
 button {
 	height: 30px;
 	padding: 0 1rem;
-	// color: $white;
-	// font-weight: 700;
-	// font-size: 1rem;
-	// font-family: $base-font;
-	// background-color: $primary;
 	border: none;
 	cursor: pointer;
 }

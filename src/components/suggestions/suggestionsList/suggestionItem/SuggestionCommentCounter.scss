@@ -1,0 +1,10 @@
+.suggestion-comment-counter_container {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.suggestion-comment-counter_text {
+  @include body1;
+  font-weight: 700;
+  color: $info-light;
+}

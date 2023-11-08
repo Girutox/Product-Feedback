@@ -6,12 +6,12 @@ import './BoardFiltersCard.scss'
 const BoardFiltersCard = () => {
   return <DefaultCard>
     <div className='board-filters-card_container'>
-      <CategoryButton text='All' isActive />
-      <CategoryButton text='UI' />
-      <CategoryButton text='UX' />
-      <CategoryButton text='Enhancement' />
-      <CategoryButton text='Bug' />
-      <CategoryButton text='Feature' />
+      <CategoryButton isActive>All</CategoryButton>
+      <CategoryButton>UI</CategoryButton>
+      <CategoryButton>UX</CategoryButton>
+      <CategoryButton>Enhancement</CategoryButton>
+      <CategoryButton>Bug</CategoryButton>
+      <CategoryButton>Feature</CategoryButton>
     </div>
   </DefaultCard>
 }

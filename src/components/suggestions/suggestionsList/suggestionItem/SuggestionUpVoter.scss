@@ -1,0 +1,43 @@
+.suggestion-upvoter_button {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2px;
+
+  height: 100%;
+
+  align-self: self-start;
+
+  background-color: $neutral;
+  border-radius: 10px;
+  width: 40px;
+  height: 53px;
+
+  @include body3;
+  font-weight: 700;
+  color: $info-light;
+
+  transition: transform 0.10s ease, background-color 0.15s ease, color 0.15s ease;
+
+  &--active {
+    background-color: $secondary;
+    color: $white;
+
+    .suggestion-upvoter_icon-container {
+      color: $white;
+    }
+  }
+}
+
+.suggestion-upvoter_icon-container {
+  color: $secondary;
+}
+
+.suggestion-upvoter_button:hover:not(.suggestion-upvoter_button--active) {
+  background-color: $neutral-light;
+}
+
+.suggestion-upvoter_button.suggestion-upvoter_button--active:hover {
+  transform: scale(1.05);
+}
