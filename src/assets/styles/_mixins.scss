@@ -1,3 +1,5 @@
+@use 'variables' as *;
+
 @mixin default-card {
   border-radius: $base-border-radius;
   padding: $base-padding;

@@ -1,3 +1,5 @@
+@use '../../assets/styles/variables' as *;
+
 .button {
   padding: 11px 24px;
   border-radius: $base-border-radius * 1.8;

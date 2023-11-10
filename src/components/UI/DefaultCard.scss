@@ -1,3 +1,5 @@
+@use '../../assets/styles/mixins' as *;
+
 .default-card_container {
   @include default-card;
 }
