@@ -3,19 +3,27 @@ import { render, screen } from '@testing-library/react'
 import Home from '../Home'
 
 describe('Home', () => {
-  it('should render header with default class', () => {
+  it('should render a level 2 heading with the text "Frontend Mentor"', () => {
     render(<Home />)
 
-    const header = screen.getByRole('banner')
+    const heading = screen.getByRole('heading', { level: 2, name: /frontend mentor/i })
 
-    expect(header).toHaveClass('home_header')
+    expect(heading).toBeInTheDocument()
   })
 
-  it('should render with 3 main cards (welcome, filters and roadmap)', () => {
-    const {container} = render(<Home />)
+  it('should render a level 3 heading with the text "Feedback Board"', () => {
+    render(<Home />)
 
-    expect(container.querySelector('.board-welcome-card_container')).not.toBeNull()
-    expect(container.querySelector('.board-filters-card_container')).not.toBeNull()
-    expect(container.querySelector('.board-roadmap-card_heading')).not.toBeNull()
+    const heading = screen.getByRole('heading', { level: 3, name: /feedback board/i })
+
+    expect(heading).toBeInTheDocument()
+  })
+
+  it('should render a welcome card with their default class', () => {
+    const { container } = render(<Home />)
+
+    const div = container.querySelector('.home_welcome-card')
+
+    expect(div).not.toBeNull()
   })
 })

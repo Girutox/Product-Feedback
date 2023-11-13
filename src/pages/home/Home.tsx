@@ -1,23 +1,12 @@
-import BoardFiltersCard from '../../components/board/BoardFiltersCard'
-import BoardRoadMapCard from '../../components/board/BoardRoadMapCard'
-import BoardWelcomeCard from '../../components/board/BoardWelcomeCard'
-import Suggestions from '../../components/suggestions/Suggestions'
-
 import './Home.scss'
 
 const Home = () => {
-  return (
-    <>
-      <header className='home_header'>
-        <BoardWelcomeCard />
-        <BoardFiltersCard />
-        <BoardRoadMapCard />
-      </header>
-      <main>
-        <Suggestions />
-      </main>
-    </>
-  )
+  return <div>
+    <div className="home_welcome-card">
+      <h2>Frontend Mentor</h2>
+      <h3>Feedback Board</h3>
+    </div>
+  </div>
 }
 
 export default Home
