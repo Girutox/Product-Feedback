@@ -4,6 +4,10 @@
   @include default-card;
   background-image: url('../../assets/images/suggestions/desktop/background-header.png');
 }
+ 
+.home_filter-card {
+  @include default-card;
+}
 
 .home_header {
   display: flex;
