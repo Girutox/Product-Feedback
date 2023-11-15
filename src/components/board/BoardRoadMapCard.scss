@@ -1,11 +1,27 @@
+@use '../../assets/styles/_mixins.scss' as *;
+
+.board-roadmap-card_container {
+  @include default-card;
+
+  min-width: 223px;
+
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+}
+
 .board-roadmap-card_heading {
   display: flex;
   justify-content: space-between;
-  margin-bottom: 24px;
+  margin-bottom: 19px;
 }
 
 .board-roadmap-card_items {
   display: flex;
   flex-direction: column;
+
   gap: 8px;
+
+  overflow-y: scroll;
+  overflow-x: hidden;
 }

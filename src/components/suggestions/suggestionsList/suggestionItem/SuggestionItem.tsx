@@ -1,4 +1,3 @@
-import DefaultCard from '../../../UI/DefaultCard'
 import { ProductRequest } from '../SuggestionsList.d'
 import CategoryButton from '../../../elements/CategoryButton'
 
@@ -9,7 +8,6 @@ import SuggestionUpVoter from './SuggestionUpVoter'
 
 const SuggestionItem = (suggestion: ProductRequest) => {
   return (
-    <DefaultCard>
       <div className='suggestion-item_container' aria-label="Suggestion item">
         <SuggestionUpVoter upvotes={suggestion.upvotes} />
         <div className='suggestion-item_info-container'>
@@ -21,7 +19,6 @@ const SuggestionItem = (suggestion: ProductRequest) => {
           <SuggestionsCommentCounter commentCount={suggestion.comments?.length ?? 0} />
         </div>
       </div>
-    </DefaultCard>
   )
 }
 

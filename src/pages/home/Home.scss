@@ -1,8 +1,20 @@
+@use '../../assets/styles/_mixins.scss' as *;
+
 .home_header {
   display: flex;
   flex-direction: column;
   gap: 24px;
+
+  width: 100%;
   max-width: 255px;
+
+  @include for-tablet {
+    flex-direction: row;
+    gap: 10px;
+
+    max-width: none;
+    max-height: 178px;
+  }
 }
 
 main {

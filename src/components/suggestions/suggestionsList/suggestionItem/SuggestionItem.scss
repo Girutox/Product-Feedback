@@ -1,7 +1,9 @@
 @use '../../../../assets/styles/index' as *;
 
 .suggestion-item_container {
-  padding: 4px 8px;
+  @include default-card;
+
+  padding: 28px 32px;
   color: $info-lighter;
 
   display: flex;

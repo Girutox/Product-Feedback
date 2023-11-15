@@ -1,9 +1,22 @@
-.default-card_container.bg-custom-faded {
-  display: flex;
-}
+@use '../../assets/styles/_mixins.scss' as *;
 
 .board-welcome-card_container {
-  align-self: end;
+  @include default-card;
+
+  display: flex;
+  background-image: url('../../assets/images/suggestions/desktop/background-header.png');
+  background-repeat: no-repeat;
+
+  min-width: 150px;
+  min-height: 137px;
+
+  div {
+    align-self: end;
+  }
+
+  @include for-tablet {
+    background-image: url('../../assets/images/suggestions/tablet/background-header.png');  
+  }
 }
 
 .board-welcome-card_subtitle {

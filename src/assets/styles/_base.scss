@@ -1,4 +1,5 @@
 @use 'variables' as *;
+@use 'mixins' as *;
 
 * {
 	box-sizing: border-box;
@@ -14,6 +15,10 @@
 	flex-direction: row;
 	flex-wrap: wrap;
 	gap: 30px;
+
+	@include for-tablet {
+    width: 90%;
+  }
 }
 
 html,

@@ -3,6 +3,7 @@
 @mixin default-card {
   border-radius: $base-border-radius;
   padding: $base-padding;
+  background-color: $white;
 }
 
 @mixin body1 {
@@ -21,4 +22,10 @@
   font-size: $base-font-size * 0.8125; // 13px
   line-height: 19px;
   font-weight: 600;
+}
+
+@mixin for-tablet {
+  @media (max-width: 1317px) {
+    @content;
+  }
 }
