@@ -45,4 +45,12 @@ describe('CategoryButton', () => {
     await userEvent.click(screen.getByText(text))
     expect(screen.getByText(text)).toHaveClass('category-button--active')
   })
+
+  it('should avoid pointer events if "disabled" prop is true', () => {
+    const text = 'Enhancement'
+
+    render(<CategoryButton disabled>{text}</CategoryButton>)
+
+    expect(screen.getByText(text)).toHaveStyle('pointer-events: none')
+  })
 })

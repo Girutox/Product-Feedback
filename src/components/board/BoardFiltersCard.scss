@@ -10,10 +10,14 @@
 
   min-width: 150px;
 
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
 
   @include for-tablet {
     flex-grow: 1;
+  }
+
+  @include for-mobile {
+    display: none;
   }
 }

@@ -5,12 +5,14 @@ import './CategoryButton.scss'
 type CategoryButtonProps = {
   isActive?: boolean,
   children: string,
+  disabled?: boolean
 }
 
-const CategoryButton = ({ children, isActive }: CategoryButtonProps) => {
+const CategoryButton = ({ children, isActive, disabled = false }: CategoryButtonProps) => {
   const [active, setActive] = useState(isActive)
 
-  const buttonClasses = active ? 'category-button--active' : ''
+  const buttonActiveClass = active ? 'category-button--active' : ''
+  const buttonDisabledClass = disabled ? 'category-button--disabled' : ''
   const buttonText = children.length ? `${children[0].toUpperCase()}${children.substring(1)}` : children
 
   const clickHandler = () => {
@@ -19,7 +21,7 @@ const CategoryButton = ({ children, isActive }: CategoryButtonProps) => {
 
   return (
     <button
-      className={`category-button ${buttonClasses}`}
+      className={`category-button ${buttonActiveClass} ${buttonDisabledClass}`}
       onClick={clickHandler}>
       {buttonText}
     </button>

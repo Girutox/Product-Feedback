@@ -15,6 +15,13 @@
   h3 {
     color: $info-light;
   }
+
+  @include for-mobile {
+    flex-direction: column;
+    gap: 15px;
+
+    padding: 25px 24px;
+  }
 }
 
 .suggestion-item_info-container {
@@ -24,6 +31,8 @@
   flex-direction: column;
   gap: 4px;
 
+  width: 100%;
+
   button {
     margin-top: 8px;
     width: fit-content;
@@ -32,4 +41,11 @@
 
 .suggestion-item_description {
   @include body1;
+}
+
+.suggestion-item_comment-container {
+  width: 100%;
+
+  display: flex;
+  justify-content: space-between;
 }

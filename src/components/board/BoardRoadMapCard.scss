@@ -8,6 +8,10 @@
   display: flex;
   flex-direction: column;
   overflow: hidden;
+
+  @include for-mobile {
+    display: none;
+  }
 }
 
 .board-roadmap-card_heading {
@@ -22,6 +26,6 @@
 
   gap: 8px;
 
-  overflow-y: scroll;
+  overflow-y: auto;
   overflow-x: hidden;
 }

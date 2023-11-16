@@ -19,6 +19,13 @@
 	@include for-tablet {
     width: 90%;
   }
+
+	@include for-mobile {
+		width: 100%;
+		margin: 0;
+
+    gap: 0;
+  }
 }
 
 html,
@@ -34,6 +41,14 @@ body {
 	color: $black;	
 	background: $neutral-lighter;
 	padding-top: 94px;
+
+	@include for-tablet {
+		padding-top: 56px;
+	}
+
+	@include for-mobile {
+		padding-top: 0px;
+	}
 }
 
 h1 {

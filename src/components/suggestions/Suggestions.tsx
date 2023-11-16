@@ -1,8 +1,9 @@
 import { useState, useEffect } from 'react'
 import { FeedbackResponse, ProductRequest } from './suggestionsList/SuggestionsList.d'
-
 import SuggestionsToolbar from './SuggestionsToolbar'
 import SuggestionsList from './suggestionsList/SuggestionsList'
+
+import './Suggestions.scss'
 
 const Suggestions = () => {
   const [suggestions, setSuggestions] = useState<ProductRequest[]>([])
@@ -16,7 +17,7 @@ const Suggestions = () => {
   return (
     <>
       <SuggestionsToolbar />
-      <section aria-label="Suggestions main content">
+      <section className='suggestions_data-container' aria-label="Suggestions main content">
         <SuggestionsList data={suggestions} />
       </section>
     </>

@@ -15,6 +15,10 @@
     max-width: none;
     max-height: 178px;
   }
+
+  @include for-mobile {
+    // position: fixed;
+  }
 }
 
 main {

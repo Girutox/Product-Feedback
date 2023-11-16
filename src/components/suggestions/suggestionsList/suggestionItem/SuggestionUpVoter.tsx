@@ -9,17 +9,28 @@ type Props = {
 
 const SuggestionUpVoter = ({ upvotes }: Props) => {
   const [isActive, setIsActive] = useState(false)
+  const [upvoteCount, setUpvoteCount] = useState(upvotes)
+
+  const clickHandler = () => {
+    if (isActive) {
+      setUpvoteCount(upvoteCount - 1)
+    } else {
+      setUpvoteCount(upvoteCount + 1)
+    }
+
+    setIsActive(!isActive)
+  }
 
   const buttonActiveClass = isActive ? 'suggestion-upvoter_button--active' : ''
 
   return (
     <button
       className={`suggestion-upvoter_button ${buttonActiveClass}`}
-      onClick={() => setIsActive(true)}>
+      onClick={clickHandler}>
       <div className='suggestion-upvoter_icon-container'>
         <UpIcon />
       </div>
-      <span>{upvotes}</span>
+      <span>{upvoteCount}</span>
     </button>
   )
 }

@@ -1,3 +1,4 @@
+@use '../../assets/styles/mixins' as *;
 @use '../../assets/styles/variables' as *;
 
 .suggestions-toolbar_container {
@@ -6,11 +7,35 @@
   border-radius: $base-border-radius;
   padding: 14px;
 
+  width: 100%;
+
   display: flex;
   align-items: center;
   gap: 16px;
+
+  @include for-mobile {
+    border-radius: 0;
+
+    // position: fixed;
+    // top: 97px;
+  }
+
+  img,
+  h3 {
+    @include for-mobile {
+      display: none;
+    }
+  }
 }
 
 .suggestions-toolbar_sort-by {
   flex-grow: 1;
+
+  label, select {
+    font-size: $font-size-xs;
+
+    @include for-mobile {
+      font-size: 13px;
+    }
+  }
 }

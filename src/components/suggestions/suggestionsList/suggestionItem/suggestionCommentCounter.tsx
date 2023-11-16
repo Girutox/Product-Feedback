@@ -10,7 +10,7 @@ const SuggestionsCommentCounter = ({ commentCount }: Props) => {
   return (
     <div className='suggestion-comment-counter_container'>
       {/* // TODO: is alt property required here? */}
-      <img src={CommentImage} alt="Comment counter" aria-hidden='true' />
+      <img src={CommentImage} alt="Comment counter"/>
       <span className='suggestion-comment-counter_text'>{commentCount}</span>
     </div>
   )
