@@ -40,14 +40,14 @@ body {
 body {
 	color: $black;	
 	background: $neutral-lighter;
-	padding-top: 94px;
+	padding: 92px 0;
 
 	@include for-tablet {
-		padding-top: 56px;
+		padding: 56px;
 	}
 
 	@include for-mobile {
-		padding-top: 0px;
+		padding: 0px;
 	}
 }
 

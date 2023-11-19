@@ -1,12 +1,12 @@
 @use '../../assets/styles/_mixins.scss' as *;
 
 .suggestions_data-container {
-  max-height: calc(100vh - (94px + 72px));
+  max-height: calc(100vh - (94px + 94px + 72px));
   overflow-y: auto;
   overflow-x: hidden;
 
   @include for-tablet {
-    max-height: calc(100vh - (56px + 178px + 30px + 72px));
+    max-height: calc(100vh - (56px + 56px + 178px + 30px + 72px));
   }
 
   @include for-mobile {
