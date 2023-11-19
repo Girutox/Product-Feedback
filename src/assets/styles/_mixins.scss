@@ -31,7 +31,7 @@
 }
 
 @mixin for-mobile {
-  @media (max-width: 603px) {
+  @media (max-width: 715px) {
     @content;
   }
 }

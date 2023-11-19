@@ -15,15 +15,14 @@
 
   @include for-mobile {
     border-radius: 0;
-
-    // position: fixed;
-    // top: 97px;
   }
 
   img,
   h3 {
     @include for-mobile {
       display: none;
+      visibility: hidden;
+      opacity: 0;
     }
   }
 }

@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import SuggestionsList from '../suggestionsList/SuggestionsList'
-import { Category, ProductRequest } from '../suggestionsList/SuggestionsList.d'
+import SuggestionsList from '../SuggestionsList'
+import { Category, ProductRequest } from '../SuggestionsList.d'
 
 const mockData: ProductRequest[] = [
   {

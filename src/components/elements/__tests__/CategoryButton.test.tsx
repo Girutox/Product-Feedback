@@ -46,11 +46,23 @@ describe('CategoryButton', () => {
     expect(screen.getByText(text)).toHaveClass('category-button--active')
   })
 
-  it('should avoid pointer events if "disabled" prop is true', () => {
+  it('should have "disabled class" if "disabled" prop is true', () => {
     const text = 'Enhancement'
 
     render(<CategoryButton disabled>{text}</CategoryButton>)
 
-    expect(screen.getByText(text)).toHaveStyle('pointer-events: none')
+    const button = screen.getByRole('button', { name: text })
+
+    expect(button).toHaveClass('category-button--disabled')
+  })
+
+  it('should not have "disabled class" if "disabled" prop is false', () => {
+    const text = 'Enhancement'
+
+    render(<CategoryButton disabled={false}>{text}</CategoryButton>)
+
+    const button = screen.getByRole('button', { name: text })
+
+    expect(button).not.toHaveClass('category-button--disabled')
   })
 })

@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import SuggestionItem from '../suggestionsList/suggestionItem/SuggestionItem'
-import { Category, ProductRequest, User } from '../suggestionsList/SuggestionsList.d'
+import SuggestionItem from '../SuggestionItem'
+import { Category, ProductRequest, User } from '../../SuggestionsList.d'
 
 const suggestion: ProductRequest = {
   id: 1,

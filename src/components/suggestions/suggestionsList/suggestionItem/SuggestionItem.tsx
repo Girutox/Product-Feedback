@@ -2,9 +2,10 @@ import { ProductRequest } from '../SuggestionsList.d'
 import CategoryButton from '../../../elements/CategoryButton'
 import SuggestionsCommentCounter from './SuggestionCommentCounter'
 import SuggestionUpVoter from './SuggestionUpVoter'
+import { screenSizes } from '../../../../config'
+import useWindowSize from '../../../../hooks/useWindowsSize'
 
 import './SuggestionItem.scss'
-import useWindowSize from '../../../../hooks/useWindowsSize'
 
 const SuggestionItem = (suggestion: ProductRequest) => {
   const { width } = useWindowSize()
@@ -12,7 +13,7 @@ const SuggestionItem = (suggestion: ProductRequest) => {
   return (
     <div className='suggestion-item_container' aria-label="Suggestion item">
       {
-        width > 603 &&
+        width > screenSizes.mobileMaximun &&
         <>
           <SuggestionUpVoter upvotes={suggestion.upvotes} />
           <div className='suggestion-item_info-container'>
@@ -26,7 +27,7 @@ const SuggestionItem = (suggestion: ProductRequest) => {
         </>
       }
       {
-        width <= 603 &&
+        width <= screenSizes.mobileMaximun &&
         <>
           <div className='suggestion-item_info-container'>
             <h3>{suggestion.title}</h3>

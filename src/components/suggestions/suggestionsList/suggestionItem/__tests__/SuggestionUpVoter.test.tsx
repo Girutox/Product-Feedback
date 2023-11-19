@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import userEvent from '@testing-library/user-event'
-import SuggestionUpVoter from '../suggestionsList/suggestionItem/SuggestionUpVoter'
+import SuggestionUpVoter from '../SuggestionUpVoter'
 
 describe('SuggestionUpVoter', () => {
   // TODO: Find a way to test for SVG
