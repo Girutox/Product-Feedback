@@ -31,7 +31,7 @@ const SuggestionItem = (suggestion: ProductRequest) => {
           <div className='suggestion-item_info-container'>
             <h3>{suggestion.title}</h3>
             <p className='suggestion-item_description'>{suggestion.description}</p>
-            <CategoryButton>{suggestion.category}</CategoryButton>
+            <CategoryButton disabled>{suggestion.category}</CategoryButton>
           </div>
           <div className='suggestion-item_comment-container'>
             <SuggestionUpVoter upvotes={suggestion.upvotes} />
