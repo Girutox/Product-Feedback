@@ -43,11 +43,15 @@ describe('SuggestionsList', () => {
     expect(items.length).toBeGreaterThan(0)
   })
 
-  it ('should render "no suggestions found" message when no data is provided', async () => {
+  it ('should render default content when no data is provided', async () => {
     render(<SuggestionsList data={[]} />)
 
-    const message = await screen.findByText(/no suggestions found/i)
+    const title = await screen.findByText(/there is no feedback yet/i)
+    const message = await screen.findByText(/got a suggestion/i)
+    const buttton = await screen.findByRole('button', { name: '+ Add Feedback' })
 
+    expect(title).toBeInTheDocument()
     expect(message).toBeInTheDocument()
+    expect(buttton).toBeInTheDocument()
   })
 })

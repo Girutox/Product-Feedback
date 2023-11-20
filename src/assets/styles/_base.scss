@@ -10,19 +10,26 @@
 #root {
 	width: 74.5%;
 	margin: 0 auto;
+	min-height: 100vh;
+	padding: 92px 0;
 
 	display: flex;
 	flex-direction: row;
-	flex-wrap: wrap;
 	gap: 30px;
 
 	@include for-tablet {
     width: 90%;
+		padding: 56px 0;
+
+		flex-direction: column;
   }
 
 	@include for-mobile {
 		width: 100%;
 		margin: 0;
+		padding: 0px;
+
+		flex-direction: column;
 
     gap: 0;
   }
@@ -31,6 +38,7 @@
 html,
 body {
 	max-width: 100vw;
+	min-height: 100vh;
 	// overflow-x: hidden;
 	font-family: $base-font;
 	font-size: $base-font-size;
@@ -40,15 +48,6 @@ body {
 body {
 	color: $black;	
 	background: $neutral-lighter;
-	padding: 92px 0;
-
-	@include for-tablet {
-		padding: 56px;
-	}
-
-	@include for-mobile {
-		padding: 0px;
-	}
 }
 
 h1 {

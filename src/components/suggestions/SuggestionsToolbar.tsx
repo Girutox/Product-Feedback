@@ -4,11 +4,12 @@ import Button from '../elements/Button'
 import { screenSizes } from '../../config'
 
 import './SuggestionsToolbar.scss'
+import { useContext } from 'react'
+import { SuggestionsContext } from '../../store/SuggestionsProvider'
 
 const SuggestionsToolbar = () => {
+  const { suggestions } = useContext(SuggestionsContext)
   const { width } = useWindowSize()
-
-  const suggestionsCount = 12
 
   return (
     <section className="suggestions-toolbar_container" aria-label="Suggestions toolbar">
@@ -16,7 +17,7 @@ const SuggestionsToolbar = () => {
         width > screenSizes.mobileMaximun &&
         <>
           <img width={23} height={24} src={LightbulbIcon} alt="lightbulb" />
-          <h3>{suggestionsCount} Suggestions</h3>
+          <h3>{suggestions.length} Suggestions</h3>
           <div className='suggestions-toolbar_sort-by'>
             <label htmlFor="sortBy">Sort by:</label>
             &nbsp;

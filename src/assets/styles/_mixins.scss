@@ -25,13 +25,13 @@
 }
 
 @mixin for-tablet {
-  @media (max-width: 1317px) {
+  @media (max-width: 1134px) {
     @content;
   }
 }
 
 @mixin for-mobile {
-  @media (max-width: 715px) {
+  @media (max-width: 603px) {
     @content;
   }
 }
