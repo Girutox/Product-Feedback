@@ -24,7 +24,7 @@ describe('Home', () => {
       it('should render a welcome card with their default class', () => {
         const { container } = render(<Home />)
 
-        const div = container.querySelector('.home_welcome-card')
+        const div = container.querySelector('.board-welcome-card_container')
 
         expect(div).not.toBeNull()
       })

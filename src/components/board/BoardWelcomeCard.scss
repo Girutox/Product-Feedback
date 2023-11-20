@@ -4,6 +4,9 @@
 
 .board-welcome-card_container {
   align-self: end;
+
+  @include default-card;
+  background-image: url('../../assets/images/suggestions/desktop/background-header.png');
 }
 
 .board-welcome-card_subtitle {
