@@ -9,9 +9,11 @@
   height: 100%;
 
   padding: 24px 0;
+  margin-right: 15px;
 
   @include for-mobile {
     padding: 24px 24px;
+    margin-right: 0;
   }
 }
 

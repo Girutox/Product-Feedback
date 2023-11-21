@@ -20,8 +20,10 @@ export interface ProductRequest {
 }
 
 export enum Category {
-  Bug = 'bug',
+  UI = 'UI',
+  UX = 'UX',
   Enhancement = 'enhancement',
+  Bug = 'bug',
   Feature = 'feature',
 }
 

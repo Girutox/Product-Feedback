@@ -2,61 +2,49 @@ import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
 
 import BoardFiltersCard from '../BoardFiltersCard'
+import userEvent from '@testing-library/user-event'
 
 describe('BoardFiltersCard', () => {
-  it('should render with a category button called "All"', () => {
-    render(<BoardFiltersCard />)
+  it('should render with default active category button called "All"', () => {
+    render(<BoardFiltersCard categories={[]} />)
 
     const childElement = screen.getByText('All')
 
-    expect(childElement).toHaveClass('category-button')
+    expect(childElement).toBeInTheDocument()
+    expect(childElement).toHaveClass('category-button--active')
   })
 
-  it('should render with a category button called "UI"', () => {
-    render(<BoardFiltersCard />)
+  it('should render with provided categories', () => {
+    const categories = [
+      { categoryName: 'Category 1' },
+      { categoryName: 'Category 2' },
+      { categoryName: 'Category 3' },
+    ]
 
-    const childElement = screen.getByText('UI')
+    render(<BoardFiltersCard categories={categories} />)
 
-    expect(childElement).toHaveClass('category-button')
+    expect(screen.getByRole('button', { name: categories[0].categoryName })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: categories[1].categoryName })).toBeInTheDocument()
+    expect(screen.getByRole('button', { name: categories[2].categoryName })).toBeInTheDocument()
   })
 
-  it('should render with a category button called "UX"', () => {
-    render(<BoardFiltersCard />)
+  // TODO: Ask Ronald about tests with CONTEXT
+  it.skip('should render only one active category button at a time', async () => {
+    const categories = [
+      { categoryName: 'Category 1' },
+    ]
 
-    const childElement = screen.getByText('UX')
+    render(<BoardFiltersCard categories={categories} />)
 
-    expect(childElement).toHaveClass('category-button')
-  })
+    const categoryButton1 = screen.getByRole('button', { name: /all/i })
+    const categoryButton2 = screen.getByRole('button', { name: categories[0].categoryName })
 
-  it('should render with a category button called "Enhancement"', () => {
-    render(<BoardFiltersCard />)
+    expect(categoryButton1).toHaveClass('category-button--active')
+    expect(categoryButton2).not.toHaveClass('category-button--active')
 
-    const childElement = screen.getByText('Enhancement')
+    await userEvent.click(categoryButton2)
 
-    expect(childElement).toHaveClass('category-button')
-  })
-
-  it('should render with a category button called "Bug"', () => {
-    render(<BoardFiltersCard />)
-
-    const childElement = screen.getByText('Bug')
-
-    expect(childElement).toHaveClass('category-button')
-  })
-
-  it('should render with a category button called "Feature"', () => {
-    render(<BoardFiltersCard />)
-
-    const childElement = screen.getByText('Feature')
-
-    expect(childElement).toHaveClass('category-button')
-  })
-
-  it('should render with container class for elements', () => {
-    render(<BoardFiltersCard />)
-
-    const childElement = screen.getByText('All')
-
-    expect(childElement.parentElement).toHaveClass('board-filters-card_container')
+    expect(categoryButton1).not.toHaveClass('category-button--active')
+    expect(categoryButton2).toHaveClass('category-button--active')
   })
 })

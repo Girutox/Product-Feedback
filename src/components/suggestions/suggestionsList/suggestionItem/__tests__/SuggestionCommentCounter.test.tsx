@@ -1,6 +1,6 @@
 import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import SuggestionsCommentCounter from '../SuggestionCommentCounter'
+import SuggestionsCommentCounter from '../suggestionCommentCounter'
 
 describe('SuggestionCommentCounter', () => {
   it('should render with "comment" image/icon', () => {

@@ -1,7 +1,8 @@
-import { useState } from 'react'
+import { useContext } from 'react'
 
 import './CategoryButton.scss'
 import { capitalizeFirstLetter } from '../../utils/global'
+import { SuggestionsContext } from '../../store/SuggestionsProvider'
 
 type CategoryButtonProps = {
   isActive?: boolean,
@@ -10,14 +11,14 @@ type CategoryButtonProps = {
 }
 
 const CategoryButton = ({ children, isActive, disabled = false }: CategoryButtonProps) => {
-  const [active, setActive] = useState(isActive)
+  const { changeActiveCategoryFilter } = useContext(SuggestionsContext)
 
-  const buttonActiveClass = active ? 'category-button--active' : ''
+  const buttonActiveClass = isActive ? 'category-button--active' : ''
   const buttonDisabledClass = disabled ? 'category-button--disabled' : ''
   const buttonText = capitalizeFirstLetter(children)
 
   const clickHandler = () => {
-    setActive(true)
+    changeActiveCategoryFilter(children)
   }
 
   return (

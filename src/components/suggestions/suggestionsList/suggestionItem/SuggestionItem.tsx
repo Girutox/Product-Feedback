@@ -1,6 +1,6 @@
 import { ProductRequest } from '../SuggestionsList.d'
 import CategoryButton from '../../../elements/CategoryButton'
-import SuggestionsCommentCounter from './SuggestionCommentCounter'
+import SuggestionsCommentCounter from './suggestionCommentCounter'
 import SuggestionUpVoter from './SuggestionUpVoter'
 import { screenSizes } from '../../../../config'
 import useWindowSize from '../../../../hooks/useWindowsSize'

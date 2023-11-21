@@ -6,7 +6,7 @@ import './BoardRoadMapCard.scss'
 import BoardRoadMapCardStatusItem from './BoardRoadMapCardStatusItem'
 
 const BoardRoadMapCard = () => {
-  const {suggestions} = useContext(SuggestionsContext)
+  const { suggestions } = useContext(SuggestionsContext)
 
   const groups = filterGroupBy(suggestions)
 
