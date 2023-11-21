@@ -14,27 +14,21 @@ describe('Suggestions', () => {
     expect(lightbulbIconElement).toBeInTheDocument()
   })
 
-  it.skip('should render heading level 3 for suggestions count', async () => {
-    render(<SuggestionsToolbar />)
-
-    // TODO: Mock fetch data or check how to moch with context
-    const response = await fetch('https://frontendmentor.com/getFeedback', { method: 'GET' })
-    const data = await response.json() as FeedbackResponse
-
-    const suggestionsCount = data.productRequests.length
-    const suggestionCounterElement = await screen.findByRole('heading', { level: 3, name: `${suggestionsCount} Suggestions`})
-
-    screen.debug()
-
-    expect(suggestionCounterElement).toBeInTheDocument()
-  })
-
   it('should render a select element for sorting with a label of "Sort by:"', () => {
     render(<SuggestionsToolbar />)
 
     const sortingSelectElement = screen.getByRole('combobox', { name: 'Sort by:' })
 
     expect(sortingSelectElement).toBeInTheDocument()
+  })
+
+  it.skip('should render heading level 3 for suggestions count', async () => {
+    render(<SuggestionsToolbar />)
+
+    const response = await fetch('https://frontendmentor.com/getFeedback')
+    const data = await response.json() as FeedbackResponse
+
+    expect(screen.getByRole('heading', { level: 3, name: `${data.productRequests.length} Suggestions` })).toBeInTheDocument()
   })
 
   it('should render 4 options for sorting', () => {

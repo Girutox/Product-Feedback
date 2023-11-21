@@ -9,7 +9,7 @@ type Props = {
 const SuggestionsCommentCounter = ({ commentCount }: Props) => {
   return (
     <div className='suggestion-comment-counter_container'>
-      {/* // TODO: is alt property required here? */}
+      {/* // TODO: Complete this */}
       <img src={CommentImage} alt="Comment counter"/>
       <span className='suggestion-comment-counter_text'>{commentCount}</span>
     </div>
