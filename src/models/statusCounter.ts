@@ -1,5 +1,6 @@
 export enum CIRCLE_BACKGROUND_VARIANTS {
-  'PLANNED' = 'Planned',
-  'INPROGRESS' = 'In-Progress',
-  'LIVE' = 'Live',
+  'suggestion' = 'suggestion',
+  'planned' = 'planned',
+  'in-progress' = 'in-progress',
+  'live' = 'live',
 }

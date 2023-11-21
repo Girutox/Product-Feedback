@@ -1,6 +1,7 @@
 import { useState } from 'react'
 
 import './CategoryButton.scss'
+import { capitalizeFirstLetter } from '../../utils/global'
 
 type CategoryButtonProps = {
   isActive?: boolean,
@@ -13,7 +14,7 @@ const CategoryButton = ({ children, isActive, disabled = false }: CategoryButton
 
   const buttonActiveClass = active ? 'category-button--active' : ''
   const buttonDisabledClass = disabled ? 'category-button--disabled' : ''
-  const buttonText = children.length ? `${children[0].toUpperCase()}${children.substring(1)}` : children
+  const buttonText = capitalizeFirstLetter(children)
 
   const clickHandler = () => {
     setActive(true)

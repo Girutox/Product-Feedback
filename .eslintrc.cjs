@@ -23,5 +23,6 @@ module.exports = {
       { allowConstantExport: true },
     ],
     'semi': ['error', 'never'],
+    '@typescript-eslint/ban-ts-comment': 'off'
   },
 }
