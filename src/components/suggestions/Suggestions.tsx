@@ -1,5 +1,5 @@
-import { useEffect, useContext } from 'react'
-import { FeedbackResponse, ProductRequest } from './suggestionsList/SuggestionsList.d'
+import { useEffect, useContext, useState } from 'react'
+import { FeedbackResponse, ProductRequest, SortByItem } from './suggestionsList/SuggestionsList.d'
 import SuggestionsToolbar from './SuggestionsToolbar'
 import SuggestionsList from './suggestionsList/SuggestionsList'
 
@@ -8,8 +8,7 @@ import { SuggestionsContext } from '../../store/SuggestionsProvider'
 
 const Suggestions = () => {
   const { suggestions, selectedCategoryFilter, suggestionsCount, refreshSuggestions, changeSuggestionsCount } = useContext(SuggestionsContext)
-
-  console.log(suggestionsCount)
+  const [sortByValue, setSortByValue] = useState(SortByItem.MostUpvotes)
 
   useEffect(() => {
     const getFeedback = async () => {
@@ -33,11 +32,18 @@ const Suggestions = () => {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedCategoryFilter, suggestions])
 
+  const changeSortByValue = (value: SortByItem) => {
+    setSortByValue(value)
+  }
+
   return (
     <>
-      <SuggestionsToolbar suggestionsCount={suggestionsCount} />
+      <SuggestionsToolbar suggestionsCount={suggestionsCount} changeSortByValue={changeSortByValue} />
       <section className='suggestions_data-container' aria-label="Suggestions main content">
-        <SuggestionsList data={suggestions} selectedCategoryFilter={selectedCategoryFilter} />
+        <SuggestionsList
+          data={suggestions}
+          selectedCategoryFilter={selectedCategoryFilter}
+          sortByValue={sortByValue} />
       </section>
     </>
   )

@@ -39,3 +39,10 @@ export interface Reply {
   replyingTo: string;
   user:       User;
 }
+
+export enum SortByItem {
+  MostUpvotes = 1,
+  LeastUpvotes = 2,
+  MostComments = 3,
+  LeastComments = 4,
+}

@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import SuggestionsList from '../SuggestionsList'
-import { Category, ProductRequest } from '../SuggestionsList.d'
+import { Category, ProductRequest, SortByItem } from '../SuggestionsList.d'
 import { capitalizeFirstLetter } from '../../../../utils/global'
 
 describe('SuggestionsList', () => {
@@ -46,7 +46,7 @@ describe('SuggestionsList', () => {
   ]
   
   it('should render all items when data is provided and filter is "all"', async () => {
-    render(<SuggestionsList data={mockData} selectedCategoryFilter='all' />)
+    render(<SuggestionsList data={mockData} selectedCategoryFilter='all' sortByValue={SortByItem.MostUpvotes} />)
 
     mockData.forEach((item) => {
       const title = screen.getByText(item.title)
@@ -64,7 +64,7 @@ describe('SuggestionsList', () => {
   })
 
   it('should render only selected items to be filtered', async () => {
-    render(<SuggestionsList data={mockData} selectedCategoryFilter={Category.Enhancement} />)
+    render(<SuggestionsList data={mockData} selectedCategoryFilter={Category.Enhancement} sortByValue={SortByItem.MostUpvotes} />)
 
     const activeTitle = screen.getByText(mockData[0].title)
     const inactiveTitle = screen.queryByText(mockData[1].title)
@@ -74,7 +74,7 @@ describe('SuggestionsList', () => {
   })
 
   it ('should render default content when no data is provided', async () => {
-    render(<SuggestionsList data={[]} selectedCategoryFilter='All' />)
+    render(<SuggestionsList data={[]} selectedCategoryFilter='All' sortByValue={SortByItem.MostUpvotes} />)
 
     const title = await screen.findByText(/there is no feedback yet/i)
     const message = await screen.findByText(/got a suggestion/i)
