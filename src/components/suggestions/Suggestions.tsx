@@ -9,6 +9,8 @@ import { SuggestionsContext } from '../../store/SuggestionsProvider'
 const Suggestions = () => {
   const { suggestions, selectedCategoryFilter, suggestionsCount, refreshSuggestions, changeSuggestionsCount } = useContext(SuggestionsContext)
 
+  console.log(suggestionsCount)
+
   useEffect(() => {
     const getFeedback = async () => {
       const response = await fetch('https://frontendmentor.com/getFeedback', { method: 'GET' })
@@ -17,6 +19,7 @@ const Suggestions = () => {
     }
 
     getFeedback()
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
@@ -26,8 +29,9 @@ const Suggestions = () => {
       return
     }
     changeSuggestionsCount(suggestions.filter(item => item.category === selectedCategoryFilter).length)
+
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedCategoryFilter])
+  }, [selectedCategoryFilter, suggestions])
 
   return (
     <>

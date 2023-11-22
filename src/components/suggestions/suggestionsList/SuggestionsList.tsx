@@ -10,7 +10,7 @@ type SuggestionsListProps = {
 }
 
 const SuggestionsList = ({ data, selectedCategoryFilter }: SuggestionsListProps) => {
-  const filteredData = selectedCategoryFilter === 'all' ? data : data.filter((item) => item.category === selectedCategoryFilter)
+  const filteredData = selectedCategoryFilter === 'all' ? data : data.filter((item) => item.category === selectedCategoryFilter)  
 
   return (
     <>
