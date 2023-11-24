@@ -2,37 +2,68 @@ import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import SuggestionItem from '../SuggestionItem'
 import { Category, ProductRequest, User } from '../../SuggestionsList.d'
+import { capitalizeFirstLetter } from '../../../../../utils/global'
 
-const suggestion: ProductRequest = {
-  id: 1,
-  title: 'Test title',
-  category: Category.Enhancement,
-  upvotes: 5,
-  status: 'Test status',
-  description: 'Test description',
-  comments: [
-    {
-      id: 1,
-      content: 'Test comment',
-      user: {} as User,
-    },
-  ],
-}
+describe('<SuggestionItem />', () => {
+  const mockData: ProductRequest = {
+    id: 1,
+    category: Category.Feature,
+    description: 'asd',
+    status: 'planned',
+    title: 'Add tags for solutions',
+    upvotes: 112,
+    comments: [
+      {
+        id: 1,
+        content: 'asd',
+        user: {} as User,
+      },
+      {
+        id: 2,
+        content: 'sas',
+        user: {} as User,
+      }
+    ],
+  }
 
-describe('SuggestionItem', () => {
-  it('should render provided item', () => {    
-    render(<SuggestionItem {...suggestion} />)
+  it('should render a heading with the provided title', () => {
+    render(<SuggestionItem {...mockData} />)
 
-    const title = screen.getByRole('heading', {level: 3, name: `${suggestion.title}`})
-    const description = screen.getByText(`${suggestion.description}`)
-    const categoryButton = screen.getByRole('button', {name: RegExp(`${suggestion.category}`, 'i')})
-    const upvoteButton = screen.getByText(suggestion.upvotes.toString())
-    const commentsCounter = screen.getByText(`${suggestion.comments?.length ?? 0}`)
+    expect(screen.queryByRole('heading', { name: mockData.title })).toBeInTheDocument()
+  })
 
-    expect(title).toBeInTheDocument()
-    expect(description).toBeInTheDocument()
-    expect(categoryButton).toBeInTheDocument()
-    expect(upvoteButton).toBeInTheDocument()
-    expect(commentsCounter).toBeInTheDocument()
+  it('should render a paragraph with the provided description', () => {
+    render(<SuggestionItem {...mockData} />)
+
+    expect(screen.queryByText(mockData.description)).toBeInTheDocument()
+  })
+
+  it('should render a button with the provided category', () => {
+    render(<SuggestionItem {...mockData} />)
+
+    expect(screen.queryByRole('button', { name: capitalizeFirstLetter(mockData.category) }))
+  })
+
+  it('should render a button with the provided upvotes', () => {
+    render(<SuggestionItem {...mockData} />)
+
+    expect(screen.queryByText(mockData.upvotes)).toBeInTheDocument()
+  })
+
+  describe('test comments count', () => {
+    it('should render the amount of comments of provided', () => {
+      render(<SuggestionItem {...mockData} />)
+
+      expect(screen.queryByText(mockData.comments?.length ?? 0)).toBeInTheDocument()
+    })
+
+    it('should render the value 0 when there are no comments', () => {
+      const _mockData = {...mockData}
+      _mockData.comments = []
+
+      render(<SuggestionItem {..._mockData} />)
+
+      expect(screen.queryByText(0)).toBeInTheDocument()
+    })
   })
 })
