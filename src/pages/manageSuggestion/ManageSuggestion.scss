@@ -1,0 +1,73 @@
+@use '../../assets/styles/variables' as *;
+
+.manage-suggestion_main-container {
+  display: flex;
+  flex-direction: column;
+  gap: 68px;
+
+  width: 50%;
+  margin: auto;
+}
+
+nav {
+  >a {
+    text-decoration: none;
+
+    font-size: $font-size-xs;
+    line-height: 20.23px;
+    font-weight: 700;
+    color: $info-lighter;
+
+    >img {
+      margin-right: 15.67px;
+    }
+  }
+}
+
+.manage-suggestion_form-container {
+  background-color: $white;
+  border-radius: 10px;
+  position: relative;
+
+  padding: 52px 42px;
+
+  display: flex;
+  flex-direction: column;
+
+  h1 {
+    color: $info-light;
+    margin-bottom: 40px;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+}
+
+.manage-suggestion_form-container-icon {
+  position: absolute;
+  top: -20px;
+
+  background: rgb(112, 185, 248);
+  background: linear-gradient(45deg, rgba(112, 185, 248, 1) 0%, rgba(194, 65, 185, 1) 68%, rgba(224, 80, 129, 1) 100%);
+
+  border-radius: 50%;
+  width: 56px;
+  height: 56px;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  svg {
+    transform: scale(2.3);
+  }
+}
+
+.manage-suggestion_actions-container {
+  display: flex;
+  justify-content: flex-end;
+  gap: 16px;
+}

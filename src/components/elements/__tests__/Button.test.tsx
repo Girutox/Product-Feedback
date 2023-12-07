@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import { render, screen } from '@testing-library/react'
-import Button from '../Button'
+import Button, { ButtonType } from '../Button'
 
 describe('Button', () => {
   it('should render a button element', () => {
@@ -11,12 +11,12 @@ describe('Button', () => {
     expect(buttonElement).toBeInTheDocument()
   })
 
-  it('should render with the primary button class', () => {
-    render(<Button>Demo</Button>)
+  it('should render the provided type of button', () => {
+    render(<Button type={ButtonType.ADD}>Demo</Button>)
 
     const buttonElement = screen.getByRole('button')
 
-    expect(buttonElement).toHaveClass('button-primary')
+    expect(buttonElement).toHaveClass(ButtonType.ADD)
   })
 
   it('should render with the provided children', () => {

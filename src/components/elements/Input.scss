@@ -1,0 +1,45 @@
+@use '../../assets/styles/variables' as *;
+@use '../../assets/styles/mixins' as *;
+
+.input_container {
+  display: flex;
+  flex-direction: column;
+
+  gap: 16px;
+
+  input {
+    background-color: $neutral-lighter;
+    color: $info-light;
+    
+    height: 48px;
+    border: none;
+    border-radius: 5px;
+    padding: 12px 24px;
+
+    font-size: 15px;
+    line-height: 21.68px;
+    font-weight: 400;
+  }
+
+  input:focus {
+    outline: 1px solid $secondary;
+  }
+}
+
+.input_title-container {
+  display: flex;
+  flex-direction: column;
+
+  label {
+    @include h4;
+    color: $info-light;
+  }
+
+  span {
+    font-size: $font-size-xs;
+    font-weight: 400;
+    line-height: 20.23px;
+
+    color: $info-lighter;
+  }
+}

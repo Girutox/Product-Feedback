@@ -3,6 +3,7 @@ import useWindowSize from '../../hooks/useWindowsSize'
 import Button from '../elements/Button'
 import { screenSizes } from '../../config'
 import { SortByItem } from './suggestionsList/SuggestionsList.d'
+import { useNavigate } from 'react-router-dom'
 
 import './SuggestionsToolbar.scss'
 
@@ -13,11 +14,16 @@ type SuggestionsToolbarProps = {
 
 const SuggestionsToolbar = ({ suggestionsCount, changeSortByValue }: SuggestionsToolbarProps) => {
   const { width } = useWindowSize()
+  const navigate = useNavigate()
 
   const sortByChangeHandler = (e: React.ChangeEvent<HTMLSelectElement>) => {
     const selectedValue = e.target.value
     const sortByValue: SortByItem = parseInt(selectedValue)
     changeSortByValue(sortByValue)
+  }
+
+  const addFeedbackClickHandler = () => {
+    navigate('/manageFeedBack')
   }
 
   return (
@@ -37,7 +43,7 @@ const SuggestionsToolbar = ({ suggestionsCount, changeSortByValue }: Suggestions
               <option value={SortByItem.LeastComments}>Least Comments</option>
             </select>
           </div>
-          <Button>+ Add Feedback</Button>
+          <Button onClick={addFeedbackClickHandler}>+ Add Feedback</Button>
         </>
       }
       {
@@ -53,7 +59,7 @@ const SuggestionsToolbar = ({ suggestionsCount, changeSortByValue }: Suggestions
               <option value={4}>Least Comments</option>
             </select>
           </div>
-          <Button>+ Add Feedback</Button>
+          <Button onClick={addFeedbackClickHandler}>+ Add Feedback</Button>
         </>
       }
 

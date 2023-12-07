@@ -27,7 +27,7 @@ const Home = () => {
         <BoardFiltersCard categories={categories} />
         <BoardRoadMapCard />
       </header>
-      <main>
+      <main className='home_main-container'>
         <Suggestions />
       </main>
     </>

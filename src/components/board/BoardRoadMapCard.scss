@@ -1,4 +1,5 @@
 @use '../../assets/styles/_mixins.scss' as *;
+@use '../../assets/styles/variables' as *;
 
 .board-roadmap-card_container {
   @include default-card;
@@ -18,6 +19,10 @@
   display: flex;
   justify-content: space-between;
   margin-bottom: 19px;
+  
+  h3 {
+    color: $info-light;
+  }
 }
 
 .board-roadmap-card_items {

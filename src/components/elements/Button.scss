@@ -11,11 +11,20 @@
   transition: background-color 0.10s ease;
 }
 
-.button-primary {
+.button--add {
   background-color: $primary;
   color: $white;
 
   &:hover {
     background-color: #C75AF6;
+  }
+}
+
+.button--cancel {
+  background-color: $info-light;
+  color: $white;
+
+  &:hover {
+    background-color: #656EA3;
   }
 }
