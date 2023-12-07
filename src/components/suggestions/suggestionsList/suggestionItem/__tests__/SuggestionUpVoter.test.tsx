@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event'
 import SuggestionUpVoter from '../SuggestionUpVoter'
 
 describe('SuggestionUpVoter', () => {
-  // TODO: Find a way to test for SVG
+  // TODO: Test with SVG Sprite
   it.skip('should render with "up" svg', () => {
     render(<SuggestionUpVoter upvotes={0} />)
 
