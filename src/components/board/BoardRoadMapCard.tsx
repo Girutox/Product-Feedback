@@ -1,12 +1,12 @@
 import { filterGroupBy } from '../../utils/filterGroupBy'
 import { useContext } from 'react'
-import { SuggestionsContext } from '../../store/SuggestionsProvider'
+import { SuggestionsContext, SuggestionsContextType } from '../../store/SuggestionsProvider'
 
 import './BoardRoadMapCard.scss'
 import BoardRoadMapCardStatusItem from './BoardRoadMapCardStatusItem'
 
 const BoardRoadMapCard = () => {
-  const { suggestions } = useContext(SuggestionsContext)
+  const { suggestions } = useContext(SuggestionsContext) as SuggestionsContextType
 
   const groups = filterGroupBy(suggestions)
 

@@ -1,7 +1,7 @@
 import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import SuggestionsList from '../SuggestionsList'
-import { Category, ProductRequest, SortByItem } from '../SuggestionsList.d'
+import { ProductRequest, SortByItem } from '../SuggestionsList.d'
 import { capitalizeFirstLetter } from '../../../../utils/global'
 
 describe('SuggestionsList', () => {
@@ -9,7 +9,7 @@ describe('SuggestionsList', () => {
     {
       'id': 1,
       'title': 'Add tags for solutions',
-      'category': Category.Enhancement,
+      'category': 'enhancement',
       'upvotes': 112,
       'status': 'suggestion',
       'description': 'Easier to search for solutions based on a specific stack.',
@@ -37,7 +37,7 @@ describe('SuggestionsList', () => {
     {
       'id': 2,
       'title': 'DEMO TITLE',
-      'category': Category.Bug,
+      'category': 'bug',
       'upvotes': 45,
       'status': 'planned',
       'description': 'DEMO DESC',
@@ -64,7 +64,7 @@ describe('SuggestionsList', () => {
   })
 
   it('should render only selected items to be filtered', async () => {
-    render(<SuggestionsList data={mockData} selectedCategoryFilter={Category.Enhancement} sortByValue={SortByItem.MostUpvotes} />)
+    render(<SuggestionsList data={mockData} selectedCategoryFilter={'enhancement'} sortByValue={SortByItem.MostUpvotes} />)
 
     const activeTitle = screen.getByText(mockData[0].title)
     const inactiveTitle = screen.queryByText(mockData[1].title)

@@ -2,12 +2,12 @@ import { useEffect, useContext, useState } from 'react'
 import { FeedbackResponse, ProductRequest, SortByItem } from './suggestionsList/SuggestionsList.d'
 import SuggestionsToolbar from './SuggestionsToolbar'
 import SuggestionsList from './suggestionsList/SuggestionsList'
+import { SuggestionsContext, SuggestionsContextType } from '../../store/SuggestionsProvider'
 
 import './Suggestions.scss'
-import { SuggestionsContext } from '../../store/SuggestionsProvider'
 
 const Suggestions = () => {
-  const { suggestions, selectedCategoryFilter, suggestionsCount, refreshSuggestions, changeSuggestionsCount } = useContext(SuggestionsContext)
+  const { suggestions, selectedCategoryFilter, suggestionsCount, refreshSuggestions, changeSuggestionsCount } = useContext(SuggestionsContext) as SuggestionsContextType
   const [sortByValue, setSortByValue] = useState(SortByItem.MostUpvotes)
 
   useEffect(() => {
@@ -17,7 +17,9 @@ const Suggestions = () => {
       refreshSuggestions(data.productRequests as ProductRequest[])
     }
 
-    getFeedback()
+    if (localStorage.getItem('suggestions') === null) {
+      getFeedback()
+    }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])

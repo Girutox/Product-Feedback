@@ -1,22 +1,24 @@
+import { Path, UseFormRegister } from 'react-hook-form'
+import { IFormValues } from '../../pages/manageSuggestion/ManageSuggestion'
 import './Input.scss'
 
 type InputProps = {
-  label: string,
-  subtitle?: string,
   type: string,
-  id: string,
-  name: string
+  label: Path<IFormValues>,
+  register?: UseFormRegister<IFormValues>,
+  required?: boolean
 }
 
-const Input = ({ label, subtitle, type, id, name }: InputProps) => {
+const Input = ({ type, label, register, required }: InputProps) => {
   return (
-    <div className='input_container'>
-      <div className='input_title-container'>
-        <label htmlFor={id}>{label}</label>
-        <span>{subtitle}</span>
-      </div>
-      <input type={type} id={id} name={name} />
-    </div>
+    <>
+    {
+      register && <input className='input_control' type={type} id={label} {...register(label, { required })} />
+    }
+    {
+      !register && <input className='input_control' type={type} id={label} name={label} />
+    }
+    </>
   )
 }
 

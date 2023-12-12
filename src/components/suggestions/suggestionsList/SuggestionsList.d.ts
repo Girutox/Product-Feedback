@@ -12,19 +12,11 @@ export interface User {
 export interface ProductRequest {
   id:          number;
   title:       string;
-  category:    Category;
+  category:    string;
   upvotes:     number;
   status:      string;
   description: string;
   comments?:   Comment[];
-}
-
-export enum Category {
-  UI = 'UI',
-  UX = 'UX',
-  Enhancement = 'enhancement',
-  Bug = 'bug',
-  Feature = 'feature',
 }
 
 export interface Comment {

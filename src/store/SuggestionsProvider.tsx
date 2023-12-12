@@ -1,14 +1,18 @@
 import { createContext, useEffect, useState } from 'react'
 import { ProductRequest } from '../components/suggestions/suggestionsList/SuggestionsList.d'
+import { IFormValues } from '../pages/manageSuggestion/ManageSuggestion'
 
-export const SuggestionsContext = createContext({
-  suggestions: [] as ProductRequest[],
-  selectedCategoryFilter: 'all',
-  suggestionsCount: 0,
-  refreshSuggestions: (suggestions: ProductRequest[]) => { console.log(suggestions) },
-  changeActiveCategoryFilter: (categoryFilter: string) => { console.log(categoryFilter) },
-  changeSuggestionsCount: (suggestionsCount: number) => { console.log(suggestionsCount) }
-})
+export type SuggestionsContextType = {
+  suggestions: ProductRequest[],
+  selectedCategoryFilter: string,
+  suggestionsCount: number,
+  refreshSuggestions: (suggestions: ProductRequest[]) => void,
+  changeActiveCategoryFilter: (categoryFilter: string) => void,
+  changeSuggestionsCount: (suggestionsCount: number) => void,
+  addSuggestion: (suggestion: IFormValues) => void
+}
+
+export const SuggestionsContext = createContext<SuggestionsContextType>({} as SuggestionsContextType)
 
 type SuggestionsProviderProps = {
   children: React.ReactNode
@@ -40,13 +44,28 @@ const SuggestionsProvider = ({ children }: SuggestionsProviderProps) => {
     setSuggestionsCount(suggestionsCount)
   }
 
+  const addSuggestion = (suggestion: IFormValues) => {
+    const newSuggestion: ProductRequest = {
+      id: suggestions.length + 1,
+      title: suggestion.title,
+      category: suggestion.category,
+      upvotes: 0,
+      status: 'suggestion',
+      description: suggestion.feedbackDetail,
+    }
+
+    localStorage.setItem('suggestions', JSON.stringify([...suggestions, newSuggestion]))
+    setSuggestions([...suggestions, newSuggestion])
+  }
+
   const suggestionsContext = {
     suggestions,
     selectedCategoryFilter,
     suggestionsCount,
     refreshSuggestions,
     changeActiveCategoryFilter,
-    changeSuggestionsCount
+    changeSuggestionsCount,
+    addSuggestion
   }
 
   return (

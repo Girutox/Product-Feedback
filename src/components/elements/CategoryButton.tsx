@@ -2,7 +2,7 @@ import { useContext } from 'react'
 
 import './CategoryButton.scss'
 import { capitalizeFirstLetter } from '../../utils/global'
-import { SuggestionsContext } from '../../store/SuggestionsProvider'
+import { SuggestionsContext, SuggestionsContextType } from '../../store/SuggestionsProvider'
 
 type CategoryButtonProps = {
   isActive?: boolean,
@@ -11,7 +11,7 @@ type CategoryButtonProps = {
 }
 
 const CategoryButton = ({ children, isActive, disabled = false }: CategoryButtonProps) => {
-  const { changeActiveCategoryFilter } = useContext(SuggestionsContext)
+  const { changeActiveCategoryFilter } = useContext(SuggestionsContext) as SuggestionsContextType
 
   const buttonActiveClass = isActive ? 'category-button--active' : ''
   const buttonDisabledClass = disabled ? 'category-button--disabled' : ''

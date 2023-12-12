@@ -3,10 +3,15 @@ import { render, screen } from '@testing-library/react'
 
 import BoardFiltersCard from '../BoardFiltersCard'
 import userEvent from '@testing-library/user-event'
+import SuggestionsProvider from '../../../store/SuggestionsProvider'
 
 describe('BoardFiltersCard', () => {
   it('should render with default active category button called "All"', () => {
-    render(<BoardFiltersCard categories={[]} />)
+    render(
+      <SuggestionsProvider>
+        <BoardFiltersCard categories={[]} />
+      </SuggestionsProvider>
+    )
 
     const childElement = screen.getByText('All')
 
@@ -21,7 +26,11 @@ describe('BoardFiltersCard', () => {
       { categoryName: 'Category 3' },
     ]
 
-    render(<BoardFiltersCard categories={categories} />)
+    render(
+      <SuggestionsProvider>
+        <BoardFiltersCard categories={categories} />
+      </SuggestionsProvider>
+    )
 
     expect(screen.getByRole('button', { name: categories[0].categoryName })).toBeInTheDocument()
     expect(screen.getByRole('button', { name: categories[1].categoryName })).toBeInTheDocument()
@@ -34,7 +43,11 @@ describe('BoardFiltersCard', () => {
       { categoryName: 'Category 1' },
     ]
 
-    render(<BoardFiltersCard categories={categories} />)
+    render(
+      <SuggestionsProvider>
+        <BoardFiltersCard categories={categories} />
+      </SuggestionsProvider>
+    )
 
     const categoryButton1 = screen.getByRole('button', { name: /all/i })
     const categoryButton2 = screen.getByRole('button', { name: categories[0].categoryName })

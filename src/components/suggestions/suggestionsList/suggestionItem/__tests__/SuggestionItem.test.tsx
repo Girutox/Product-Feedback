@@ -1,12 +1,12 @@
 import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import SuggestionItem from '../SuggestionItem'
-import { Category, ProductRequest, User } from '../../SuggestionsList.d'
+import { ProductRequest, User } from '../../SuggestionsList.d'
 
 const suggestion: ProductRequest = {
   id: 1,
   title: 'Test title',
-  category: Category.Enhancement,
+  category: 'enhancement',
   upvotes: 5,
   status: 'Test status',
   description: 'Test description',

@@ -2,13 +2,16 @@ import { describe, it, expect } from 'vitest'
 import { render, screen } from '@testing-library/react'
 import ManageSuggestion from '../ManageSuggestion'
 import { BrowserRouter } from 'react-router-dom'
+import SuggestionsProvider from '../../../store/SuggestionsProvider'
 
 describe('ManageSuggestion', () => {
   describe('new', () => {
     it('should render the heading with text "Create New Feedback"', () => {
       render(
         <BrowserRouter>
-          <ManageSuggestion />
+          <SuggestionsProvider>
+            <ManageSuggestion />
+          </SuggestionsProvider>
         </BrowserRouter>
       )
 
@@ -20,7 +23,9 @@ describe('ManageSuggestion', () => {
     it('should render a link with the name "Go back"', () => {
       render(
         <BrowserRouter>
-          <ManageSuggestion />
+          <SuggestionsProvider>
+            <ManageSuggestion />
+          </SuggestionsProvider>
         </BrowserRouter>
       )
 
@@ -30,7 +35,9 @@ describe('ManageSuggestion', () => {
     it('should render "Feedback Title" input control', () => {
       render(
         <BrowserRouter>
-          <ManageSuggestion />
+          <SuggestionsProvider>
+            <ManageSuggestion />
+          </SuggestionsProvider>
         </BrowserRouter>
       )
 
@@ -40,7 +47,9 @@ describe('ManageSuggestion', () => {
     it('should render "Category" dropdown control', () => {
       render(
         <BrowserRouter>
-          <ManageSuggestion />
+          <SuggestionsProvider>
+            <ManageSuggestion />
+          </SuggestionsProvider>
         </BrowserRouter>
       )
 
@@ -50,7 +59,9 @@ describe('ManageSuggestion', () => {
     it('should render "FeedBack Detail" textarea control', () => {
       render(
         <BrowserRouter>
-          <ManageSuggestion />
+          <SuggestionsProvider>
+            <ManageSuggestion />
+          </SuggestionsProvider>
         </BrowserRouter>
       )
 
@@ -60,7 +71,9 @@ describe('ManageSuggestion', () => {
     it('should render "Cancel" button', () => {
       render(
         <BrowserRouter>
-          <ManageSuggestion />
+          <SuggestionsProvider>
+            <ManageSuggestion />
+          </SuggestionsProvider>
         </BrowserRouter>
       )
 
@@ -70,7 +83,9 @@ describe('ManageSuggestion', () => {
     it('should render "Add Feedback" button', () => {
       render(
         <BrowserRouter>
-          <ManageSuggestion />
+          <SuggestionsProvider>
+            <ManageSuggestion />
+          </SuggestionsProvider>
         </BrowserRouter>
       )
 
