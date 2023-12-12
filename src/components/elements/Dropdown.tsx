@@ -14,8 +14,8 @@ const Dropdown = ({ label, register, required, options }: DropdownProps) => {
   return (
     <>
       {
-        register && <select className='dropdown_control' id={label} {...register(label, { required })}>
-          <option value="" selected disabled hidden>-- Choose a category --</option>
+        register && <select defaultValue={''} className='dropdown_control' id={label} {...register(label, { required })}>
+          <option value="" disabled hidden>-- Select --</option>
           {
             options.map((option) => (
               <option key={option.value} value={option.value}>{option.label}</option>
@@ -24,7 +24,8 @@ const Dropdown = ({ label, register, required, options }: DropdownProps) => {
         </select>
       }
       {
-        !register && <select className='dropdown_control' id={label} name={label}>
+        !register && <select defaultValue={''} className='dropdown_control' id={label} name={label}>
+          <option value="" disabled hidden>-- Select --</option>
           {
             options.map((option) => (
               <option key={option.value} value={option.value}>{option.label}</option>

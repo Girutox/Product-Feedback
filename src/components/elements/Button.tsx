@@ -1,20 +1,22 @@
 import './Button.scss'
 
-export enum ButtonType {
+export enum ButtonActionType {
   ADD = 'button--add',
-  CANCEL = 'button--cancel'
+  CANCEL = 'button--cancel',
+  DELETE = 'button--delete'
 }
 
 type ButtonProps = {
-  type?: ButtonType,
+  type?: 'button' | 'submit' | 'reset',
+  actionType?: ButtonActionType,
   children: React.ReactNode,
   onClick?: () => void
 }
 
-const Button = ({ children, type, onClick }: ButtonProps) => {
-  const buttonModifier = type ? `button ${type}` : ButtonType.ADD
+const Button = ({ children, type = 'button', actionType, onClick }: ButtonProps) => {
+  const buttonModifier = actionType ? actionType : ButtonActionType.ADD
 
-  return <button className={`button ${buttonModifier}`} onClick={onClick}>
+  return <button className={`button ${buttonModifier}`} type={type} onClick={onClick}>
     {children}
   </button>
 }

@@ -28,3 +28,12 @@
     background-color: #656EA3;
   }
 }
+
+.button--delete {
+  background-color: $warning;
+  color: $white;
+
+  &:hover {
+    background-color: #E98888;
+  }
+}

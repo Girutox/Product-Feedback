@@ -12,6 +12,14 @@
 
   gap: 40px;
 
+  &:hover {
+    cursor: pointer;
+    
+    h3 {
+      color: $secondary;
+    }
+  }
+
   h3 {
     color: $info-light;
   }

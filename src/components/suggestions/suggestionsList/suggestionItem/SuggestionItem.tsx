@@ -6,12 +6,18 @@ import { screenSizes } from '../../../../config'
 import useWindowSize from '../../../../hooks/useWindowsSize'
 
 import './SuggestionItem.scss'
+import { useNavigate } from 'react-router-dom'
 
 const SuggestionItem = (suggestion: ProductRequest) => {
   const { width } = useWindowSize()
+  const navigate = useNavigate()
+
+  const suggestionItemClickHandler = () => {
+    navigate(`/manageFeedBack/${suggestion.id}`)
+  }
 
   return (
-    <div className='suggestion-item_container' aria-label="Suggestion item">
+    <div className='suggestion-item_container' aria-label="Suggestion item" onClick={suggestionItemClickHandler}>
       {
         width > screenSizes.mobileMaximun &&
         <>

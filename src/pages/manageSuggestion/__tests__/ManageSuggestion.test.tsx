@@ -10,12 +10,98 @@ describe('ManageSuggestion', () => {
       render(
         <BrowserRouter>
           <SuggestionsProvider>
-            <ManageSuggestion />
+            <ManageSuggestion isNewMode={true} />
           </SuggestionsProvider>
         </BrowserRouter>
       )
 
       expect(screen.getByRole('heading', { level: 1, name: 'Create New Feedback' })).toBeInTheDocument()
+    })
+
+    it('should not render "Status" dropdown control', () => {
+      render(
+        <BrowserRouter>
+          <SuggestionsProvider>
+            <ManageSuggestion isNewMode={true} />
+          </SuggestionsProvider>
+        </BrowserRouter>
+      )
+
+      expect(screen.queryByLabelText('Update Status')).not.toBeInTheDocument()
+    })
+
+    it('should not render "Delete" button', () => {
+      render(
+        <BrowserRouter>
+          <SuggestionsProvider>
+            <ManageSuggestion isNewMode={true} />
+          </SuggestionsProvider>
+        </BrowserRouter>
+      )
+
+      expect(screen.queryByRole('button', { name: /delete/i })).not.toBeInTheDocument()
+    })
+
+    it('should render "Add Feedback" button', () => {
+      render(
+        <BrowserRouter>
+          <SuggestionsProvider>
+            <ManageSuggestion isNewMode={true} />
+          </SuggestionsProvider>
+        </BrowserRouter>
+      )
+
+      expect(screen.getByRole('button', { name: /add feedback/i })).toBeInTheDocument()
+    })
+  })
+
+  describe('edit', () => {
+    it('should render the heading with text "Editing"', () => {
+      render(
+        <BrowserRouter>
+          <SuggestionsProvider>
+            <ManageSuggestion isNewMode={false} />
+          </SuggestionsProvider>
+        </BrowserRouter>
+      )
+
+      expect(screen.getByRole('heading', { level: 1, name: /editing/i })).toBeInTheDocument()
+    })
+
+    it('should render "Status" dropdown control', () => {
+      render(
+        <BrowserRouter>
+          <SuggestionsProvider>
+            <ManageSuggestion isNewMode={false} />
+          </SuggestionsProvider>
+        </BrowserRouter>
+      )
+
+      expect(screen.getByLabelText('Update Status')).toBeInTheDocument()
+    })
+
+    it('should render "Delete" button', () => {
+      render(
+        <BrowserRouter>
+          <SuggestionsProvider>
+            <ManageSuggestion isNewMode={false} />
+          </SuggestionsProvider>
+        </BrowserRouter>
+      )
+
+      expect(screen.getByRole('button', { name: /delete/i })).toBeInTheDocument()
+    })
+
+    it('should render "Save Changes" button', () => {
+      render(
+        <BrowserRouter>
+          <SuggestionsProvider>
+            <ManageSuggestion isNewMode={false} />
+          </SuggestionsProvider>
+        </BrowserRouter>
+      )
+
+      expect(screen.getByRole('button', { name: /save changes/i })).toBeInTheDocument()
     })
   })
 
@@ -78,18 +164,6 @@ describe('ManageSuggestion', () => {
       )
 
       expect(screen.getByRole('button', { name: /cancel/i })).toBeInTheDocument()
-    })
-
-    it('should render "Add Feedback" button', () => {
-      render(
-        <BrowserRouter>
-          <SuggestionsProvider>
-            <ManageSuggestion />
-          </SuggestionsProvider>
-        </BrowserRouter>
-      )
-
-      expect(screen.getByRole('button', { name: /add feedback/i })).toBeInTheDocument()
     })
   })
 })

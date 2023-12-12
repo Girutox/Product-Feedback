@@ -18,7 +18,11 @@ const router = createBrowserRouter([
   },
   {
     path: '/manageFeedBack',
-    element: <SuggestionsProvider><ManageSuggestion /></SuggestionsProvider>
+    element: <SuggestionsProvider><ManageSuggestion isNewMode={true} /></SuggestionsProvider>
+  },
+  {
+    path: '/manageFeedBack/:id',
+    element: <SuggestionsProvider><ManageSuggestion  isNewMode={false} /></SuggestionsProvider>
   },
 ])
 

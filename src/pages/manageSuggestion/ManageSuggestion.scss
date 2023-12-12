@@ -50,20 +50,9 @@ nav {
   position: absolute;
   top: -20px;
 
-  background: rgb(112, 185, 248);
-  background: linear-gradient(45deg, rgba(112, 185, 248, 1) 0%, rgba(194, 65, 185, 1) 68%, rgba(224, 80, 129, 1) 100%);
-
   border-radius: 50%;
-  width: 56px;
-  height: 56px;
-
-  display: flex;
-  justify-content: center;
-  align-items: center;
-
-  svg {
-    transform: scale(2.3);
-  }
+  // width: 56px;
+  // height: 56px;
 }
 
 .manage-suggestion_actions-container {
