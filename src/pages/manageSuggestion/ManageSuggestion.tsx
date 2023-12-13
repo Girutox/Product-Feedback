@@ -7,7 +7,7 @@ import useGetCategories from '../../hooks/useGetCategories'
 import { capitalizeFirstLetter } from '../../utils/global'
 import TextArea from '../../components/elements/TextArea'
 import { SubmitHandler, useForm } from 'react-hook-form'
-import { useContext } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { SuggestionsContext, SuggestionsContextType } from '../../store/SuggestionsProvider'
 
 import './ManageSuggestion.scss'
@@ -26,23 +26,74 @@ type ManageSuggestionProps = {
 const ManageSuggestion = ({ isNewMode = true }: ManageSuggestionProps) => {
   const navigate = useNavigate()
   const { categories } = useGetCategories()
-  const { register, handleSubmit } = useForm<IFormValues>()
-  const { suggestions, addSuggestion } = useContext(SuggestionsContext) as SuggestionsContextType
+  const { register, handleSubmit, setValue } = useForm<IFormValues>()
+  const { suggestions, addSuggestion, updateSuggestion, deleteSuggestion } = useContext(SuggestionsContext) as SuggestionsContextType
   const { id } = useParams()
+  const [statutes, setStatutes] = useState<{ statusName: string }[]>([])
 
   const suggestion = suggestions.find(item => item.id === parseInt(id ?? '0'))
 
-  const goBackHandler = () => {
-    navigate('/')
-  }
+  useEffect(() => {
+    const getStatutes = async () => {
+      const response = await fetch('https://frontendmentor.com/getStatuses')
+      const data = await response.json()
+      setStatutes(data)
+    }
+
+    getStatutes()
+  }, [])  
 
   const categoryOptions = categories.map((category) => ({
     value: category.categoryName,
     label: capitalizeFirstLetter(category.categoryName)
   }))
 
+  const statusOptions = statutes.map((status) => ({
+    value: status.statusName,
+    label: capitalizeFirstLetter(status.statusName)
+  }))
+
+  useEffect(() => {
+    setValue('title', suggestion?.title ?? '')
+    setValue('category', suggestion?.category ?? '')
+    setValue('status', suggestion?.status ?? '')
+    setValue('feedbackDetail', suggestion?.description ?? '')
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [categories])
+
+  useEffect(() => {
+    setValue('title', suggestion?.title ?? '')
+    setValue('category', suggestion?.category ?? '')
+    setValue('status', suggestion?.status ?? '')
+    setValue('feedbackDetail', suggestion?.description ?? '')
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [statusOptions])
+
+  const goBackHandler = () => {
+    navigate('/')
+  }
+
   const onSubmit: SubmitHandler<IFormValues> = (data) => {
-    addSuggestion(data)
+    if (isNewMode) {
+      addSuggestion(data)
+    } else {
+      updateSuggestion({
+        id: suggestion?.id ?? 0,
+        title: data.title,
+        category: data.category,
+        status: data.status,
+        description: data.feedbackDetail,
+        upvotes: suggestion?.upvotes ?? 0
+      })
+    }
+
+    navigate('/')
+  }
+
+  const deleteSuggestionClickHandler = () => {
+    deleteSuggestion(parseInt(id ?? '0'))
     navigate('/')
   }
 
@@ -67,19 +118,19 @@ const ManageSuggestion = ({ isNewMode = true }: ManageSuggestionProps) => {
           <h1>{isNewMode ? 'Create New Feedback' : `Editing ´${suggestion?.title}´`}</h1>
           <form onSubmit={handleSubmit(onSubmit)}>
             <FormControl label="Feedback Title" subtitle='Add a short, descriptive headline' id='title'>
-              <Input type='text' label='title' register={register} required />
+              <Input type='text' defaultValue={suggestion?.title} label='title' register={register} required />
             </FormControl>
             <FormControl label="Category" subtitle='Choose a category for your feedback' id='category'>
-              <Dropdown options={categoryOptions} label='category' register={register} required />
+              <Dropdown defaultValue={suggestion?.category} options={categoryOptions} label='category' register={register} required />
             </FormControl>
             {
               !isNewMode &&
               <FormControl label="Update Status" subtitle='Change feedback state' id='status'>
-                <Dropdown options={categoryOptions} label='status' register={register} required />
+                <Dropdown defaultValue={suggestion?.status} options={statusOptions} label='status' register={register} required />
               </FormControl>
             }
             <FormControl label="Feedback Detail" subtitle='Include any specific comments on what should be improved, added, etc.' id='feedbackDetail'>
-              <TextArea label='feedbackDetail' register={register} required />
+              <TextArea defaultValue={suggestion?.description} label='feedbackDetail' register={register} required />
             </FormControl>
             <div className='manage-suggestion_actions-container'>
               {
@@ -92,7 +143,7 @@ const ManageSuggestion = ({ isNewMode = true }: ManageSuggestionProps) => {
               {
                 !isNewMode &&
                 <>
-                  <Button actionType={ButtonActionType.DELETE}>Delete</Button>
+                  <Button actionType={ButtonActionType.DELETE} onClick={deleteSuggestionClickHandler}>Delete</Button>
                   <Button actionType={ButtonActionType.CANCEL} onClick={goBackHandler}>Cancel</Button>
                   <Button type='submit'>Save Changes</Button>
                 </>

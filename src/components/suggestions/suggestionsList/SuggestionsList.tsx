@@ -1,3 +1,4 @@
+import { useNavigate } from 'react-router-dom'
 import Button from '../../elements/Button'
 import SuggestionItem from './suggestionItem/SuggestionItem'
 import { ProductRequest, SortByItem } from './SuggestionsList.d'
@@ -12,6 +13,11 @@ type SuggestionsListProps = {
 
 const SuggestionsList = ({ data, selectedCategoryFilter, sortByValue }: SuggestionsListProps) => {
   const filteredData = selectedCategoryFilter === 'all' ? data : data.filter((item) => item.category === selectedCategoryFilter)
+  const navigate = useNavigate()
+
+  const addFeedbackClickHandler = () => {
+    navigate('/manageFeedBack')
+  }
 
   const sortBy = () => {
     switch (sortByValue) {
@@ -52,7 +58,7 @@ const SuggestionsList = ({ data, selectedCategoryFilter, sortByValue }: Suggesti
             <br /> 
             We love hearing about new ideas to improve our app.
           </p>
-          <Button>+ Add Feedback</Button>
+          <Button onClick={addFeedbackClickHandler}>+ Add Feedback</Button>
         </div>
       }
     </>

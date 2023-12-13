@@ -10,12 +10,20 @@ const BoardRoadMapCard = () => {
 
   const groups = filterGroupBy(suggestions)
 
+  console.log(groups)
+  
+
   return <div className='board-roadmap-card_container'>
     <div className='board-roadmap-card_heading'>
       <h3>Roadmap</h3>
       <a href="">View</a>
     </div>
-    <BoardRoadMapCardStatusItem groups={groups} />
+    {
+      groups.length > 0 && <BoardRoadMapCardStatusItem groups={groups} />
+    }
+    {
+      groups.length === 0 && <p>No data found</p>
+    }
   </div>
 }
 

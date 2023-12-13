@@ -9,7 +9,10 @@ export type SuggestionsContextType = {
   refreshSuggestions: (suggestions: ProductRequest[]) => void,
   changeActiveCategoryFilter: (categoryFilter: string) => void,
   changeSuggestionsCount: (suggestionsCount: number) => void,
-  addSuggestion: (suggestion: IFormValues) => void
+
+  addSuggestion: (suggestion: IFormValues) => void,
+  updateSuggestion: (suggestion: ProductRequest) => void,
+  deleteSuggestion: (suggestionId: number) => void,
 }
 
 export const SuggestionsContext = createContext<SuggestionsContextType>({} as SuggestionsContextType)
@@ -58,6 +61,28 @@ const SuggestionsProvider = ({ children }: SuggestionsProviderProps) => {
     setSuggestions([...suggestions, newSuggestion])
   }
 
+  const updateSuggestion = (suggestion: ProductRequest) => {
+    const suggestionItem = suggestions.find(item => item.id === suggestion.id)
+    if (suggestionItem) {
+      suggestionItem.title = suggestion.title
+      suggestionItem.category = suggestion.category
+      suggestionItem.status = suggestion.status
+      suggestionItem.description = suggestion.description
+
+      const updatedSuggestions = suggestions.map(item => item.id === suggestion.id ? suggestionItem : item)
+
+      localStorage.setItem('suggestions', JSON.stringify(updatedSuggestions))
+      setSuggestions(updatedSuggestions)
+    }
+  }
+
+  const deleteSuggestion = (suggestionId: number) => {
+    const updatedSuggestions = suggestions.filter(item => item.id !== suggestionId)
+
+    localStorage.setItem('suggestions', JSON.stringify(updatedSuggestions))
+    setSuggestions(updatedSuggestions)
+  }
+
   const suggestionsContext = {
     suggestions,
     selectedCategoryFilter,
@@ -65,7 +90,9 @@ const SuggestionsProvider = ({ children }: SuggestionsProviderProps) => {
     refreshSuggestions,
     changeActiveCategoryFilter,
     changeSuggestionsCount,
-    addSuggestion
+    addSuggestion,
+    updateSuggestion,
+    deleteSuggestion
   }
 
   return (

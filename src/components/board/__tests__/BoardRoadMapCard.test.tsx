@@ -23,4 +23,14 @@ describe('BoardRoadMapCard', () => {
 
     expect(screen.getByRole('heading', { level: 3, name: 'Roadmap' })).toBeInTheDocument()
   })
+
+  it.skip('should render "No data found" when suggestion array is empty', () => {
+    render(
+      <SuggestionsProvider>
+        <BoardRoadMapCard />
+      </SuggestionsProvider>
+    )
+
+    expect(screen.getByText('No data found')).toBeInTheDocument()
+  })
 })

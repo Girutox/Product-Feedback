@@ -15,4 +15,12 @@ export const handlers = [
       { categoryName: 'feature' }
     ])
   }),
+  http.get('https://frontendmentor.com/getStatuses', () => {
+    return HttpResponse.json<{ statusName: string }[]>([
+      { statusName: 'planned' },
+      { statusName: 'suggestion' },
+      { statusName: 'live' },
+      { statusName: 'in-progress' }
+    ])
+  }),
 ]
