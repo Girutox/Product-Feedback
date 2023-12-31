@@ -1,5 +1,5 @@
 import { createContext, useEffect, useState } from 'react'
-import { ProductRequest } from '../components/suggestions/suggestionsList/SuggestionsList.d'
+import { ProductRequest, Comment, Reply } from '../components/suggestions/suggestionsList/SuggestionsList.d'
 import { IFormValues } from '../pages/manageSuggestion/ManageSuggestion'
 
 export type SuggestionsContextType = {
@@ -13,6 +13,9 @@ export type SuggestionsContextType = {
   addSuggestion: (suggestion: IFormValues) => void,
   updateSuggestion: (suggestion: ProductRequest) => void,
   deleteSuggestion: (suggestionId: number) => void,
+
+  addComment: (suggestionId: number, comment: Comment) => void,
+  addReply: (suggestionId: number, commentId: number, reply: Reply) => void,
 }
 
 export const SuggestionsContext = createContext<SuggestionsContextType>({} as SuggestionsContextType)
@@ -83,6 +86,39 @@ const SuggestionsProvider = ({ children }: SuggestionsProviderProps) => {
     setSuggestions(updatedSuggestions)
   }
 
+  const addComment = (suggestionId: number, comment: Comment) => {
+    const suggestionItem = suggestions.find(item => item.id === suggestionId)
+    if (suggestionItem) {
+      if (!suggestionItem.comments) {
+        suggestionItem.comments = []
+      }
+      suggestionItem.comments = [...suggestionItem.comments, comment]
+
+      const updatedSuggestions = suggestions.map(item => item.id === suggestionId ? suggestionItem : item)
+
+      localStorage.setItem('suggestions', JSON.stringify(updatedSuggestions))
+      setSuggestions(updatedSuggestions)
+    }
+  }
+
+  const addReply = (suggestionId: number, commentId: number, reply: Reply) => {
+    const suggestionItem = suggestions.find(item => item.id === suggestionId)
+    if (suggestionItem) {
+      const commentItem = suggestionItem.comments?.find(item => item.id === commentId)
+      if (commentItem) {
+        if (!commentItem.replies) {
+          commentItem.replies = []
+        }
+        commentItem.replies = [...commentItem.replies!, reply]
+
+        const updatedSuggestions = suggestions.map(item => item.id === suggestionId ? suggestionItem : item)
+
+        localStorage.setItem('suggestions', JSON.stringify(updatedSuggestions))
+        setSuggestions(updatedSuggestions)
+      }
+    }
+  }
+
   const suggestionsContext = {
     suggestions,
     selectedCategoryFilter,
@@ -92,7 +128,9 @@ const SuggestionsProvider = ({ children }: SuggestionsProviderProps) => {
     changeSuggestionsCount,
     addSuggestion,
     updateSuggestion,
-    deleteSuggestion
+    deleteSuggestion,
+    addComment,
+    addReply
   }
 
   return (
