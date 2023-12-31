@@ -72,7 +72,7 @@ const ManageSuggestion = ({ isNewMode = true }: ManageSuggestionProps) => {
   }, [statusOptions])
 
   const goBackHandler = () => {
-    navigate('/')
+    navigate(-1)
   }
 
   const onSubmit: SubmitHandler<IFormValues> = (data) => {

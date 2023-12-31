@@ -1,0 +1,63 @@
+@use '../../assets/styles/index.scss' as *;
+
+.feedback-detail_main-container {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+
+  width: 50%;
+  margin: auto;
+}
+
+.feedback-detail_comments-container {
+  @include default-card;
+
+  h3 {
+    color: $info-light;
+  }
+}
+
+.feedback-detail_comments-details .comment_container:last-child{
+  border: none;
+}
+
+.feedback-detail_add-comment {
+  @include default-card;
+
+  h3 {
+    color: $info-light;
+    margin-bottom: 24px;
+  }
+
+  textarea {
+    width: 100% !important;
+  }
+}
+
+.feedback-detail_main-form-action-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  margin-top: 16px;
+
+  color: $info-lighter;
+}
+
+.feedback-detail_nav {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  
+  a:hover {
+    text-decoration: underline;
+  }
+
+  button {
+    background-color: $secondary;
+
+    &:hover {
+      background-color: #7C91F9;
+    }
+  }
+}

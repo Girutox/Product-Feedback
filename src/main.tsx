@@ -5,6 +5,7 @@ import SuggestionsProvider from './store/SuggestionsProvider.tsx'
 import Home from './pages/home/Home.tsx'
 
 import './assets/styles/index.scss'
+import FeedbackDetail from './pages/feedbackDetail/FeedbackDetail.tsx'
 
 async function deferRender() {
   const { worker } = await import('./mocks/browser')
@@ -23,6 +24,10 @@ const router = createBrowserRouter([
   {
     path: '/manageFeedBack/:id',
     element: <SuggestionsProvider><ManageSuggestion  isNewMode={false} /></SuggestionsProvider>
+  },
+  {
+    path: '/feedbackDetail/:id',
+    element: <SuggestionsProvider><FeedbackDetail /></SuggestionsProvider>
   },
 ])
 

@@ -7,6 +7,10 @@
 
   width: 50%;
   margin: auto;
+
+  nav > a:hover {
+    text-decoration: underline;
+  }
 }
 
 nav {

@@ -1,0 +1,70 @@
+@use '../../../assets/styles/index.scss' as *;
+
+.comment_container {
+  display: flex;
+  justify-content: space-between;
+
+  color: $info-lighter;
+
+  padding: 32px 0;
+
+  border-bottom: 1px solid #8c92b340;
+
+  gap: 32px;
+}
+
+.comment_info-container {
+  flex-grow: 1;
+
+  display: flex;
+  flex-direction: column;
+  gap: 17px;
+}
+
+.comment_user-info {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.comment_user-name {
+  display: flex;
+  flex-direction: column;
+
+  h4 {
+    color: $info-light;
+  }
+
+  span {
+    font-size: $font-size-xs;
+  }
+}
+
+.comment_avatar-container {
+  img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+  }
+}
+
+.comment_content {
+  p {
+    font-size: 15px;
+  }
+}
+
+.comment_reply {
+  button {
+    background: none;
+    border: none;
+    color: $secondary;
+    cursor: pointer;
+
+    @include body3;
+
+    &:hover {
+      text-decoration: underline;
+    }
+  }
+}

@@ -4,7 +4,27 @@
   display: flex;
   align-items: center;
   gap: 8px;
+
+  img, span {
+    transition: transform 0.15s ease-in-out;
+  }
 }
+
+.suggestion-comment-counter_container--has-events {
+  cursor: pointer;
+
+  &:hover {
+    span {
+      color: $secondary;
+    }
+
+    img,
+    span {
+      transform: scale(1.1)
+    }
+  }
+}
+
 .suggestion-comment-counter_text {
   @include body1;
   font-weight: 700;

@@ -10,9 +10,6 @@ const BoardRoadMapCard = () => {
 
   const groups = filterGroupBy(suggestions)
 
-  console.log(groups)
-  
-
   return <div className='board-roadmap-card_container'>
     <div className='board-roadmap-card_heading'>
       <h3>Roadmap</h3>

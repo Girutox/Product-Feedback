@@ -12,14 +12,6 @@
 
   gap: 40px;
 
-  &:hover {
-    cursor: pointer;
-    
-    h3 {
-      color: $secondary;
-    }
-  }
-
   h3 {
     color: $info-light;
   }
@@ -44,6 +36,14 @@
   button {
     margin-top: 8px;
     width: fit-content;
+  }
+
+  &:hover {
+    cursor: pointer;
+    
+    h3 {
+      color: $secondary;
+    }
   }
 }
 

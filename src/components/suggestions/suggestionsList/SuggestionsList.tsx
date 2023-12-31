@@ -43,7 +43,7 @@ const SuggestionsList = ({ data, selectedCategoryFilter, sortByValue }: Suggesti
         <div className='suggestions-list_regular-container'>
           {
             sortedData.map((suggestion: ProductRequest) => (
-              <SuggestionItem key={suggestion.id} {...suggestion} />
+              <SuggestionItem key={suggestion.id} suggestion={suggestion} />
             ))
           }
         </div>
