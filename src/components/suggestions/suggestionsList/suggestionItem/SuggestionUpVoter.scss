@@ -30,6 +30,14 @@
       color: $white;
     }
   }
+
+  &--horizontal {
+    flex-direction: row;
+    padding: 11px;
+    width: 69px;
+
+    gap: 9.5px;
+  }
 }
 
 .suggestion-upvoter_icon-container {

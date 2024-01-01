@@ -3,9 +3,10 @@ import { RouterProvider, createBrowserRouter } from 'react-router-dom'
 import ManageSuggestion from './pages/manageSuggestion/ManageSuggestion.tsx'
 import SuggestionsProvider from './store/SuggestionsProvider.tsx'
 import Home from './pages/home/Home.tsx'
+import FeedbackDetail from './pages/feedbackDetail/FeedbackDetail.tsx'
+import Roadmap from './pages/roadmap/Roadmap.tsx'
 
 import './assets/styles/index.scss'
-import FeedbackDetail from './pages/feedbackDetail/FeedbackDetail.tsx'
 
 async function deferRender() {
   const { worker } = await import('./mocks/browser')
@@ -28,6 +29,10 @@ const router = createBrowserRouter([
   {
     path: '/feedbackDetail/:id',
     element: <SuggestionsProvider><FeedbackDetail /></SuggestionsProvider>
+  },
+  {
+    path: '/roadmap',
+    element: <SuggestionsProvider><Roadmap /></SuggestionsProvider>
   },
 ])
 

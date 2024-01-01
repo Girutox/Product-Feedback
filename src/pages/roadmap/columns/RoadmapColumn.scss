@@ -1,0 +1,21 @@
+@use '../../../assets/styles/index.scss' as *;
+
+.roadmap-column_title-container {
+  margin-bottom: 32px;
+
+  h3 {
+    color: $info-light;
+  }
+
+  > span {
+    @include body1;
+    color: $info-lighter;
+  }
+}
+
+.roadmap-column_cards-container {
+  display: flex;
+  flex-direction: column;
+
+  gap: 24px;
+}

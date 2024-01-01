@@ -4,10 +4,11 @@ import UpIcon from '../../../UI/UpIcon'
 import './SuggestionUpVoter.scss'
 
 type Props = {
-  upvotes: number
+  upvotes: number,
+  horizontalLayout?: boolean
 }
 
-const SuggestionUpVoter = ({ upvotes }: Props) => {
+const SuggestionUpVoter = ({ upvotes, horizontalLayout = false }: Props) => {
   const [isActive, setIsActive] = useState(false)
   const [upvoteCount, setUpvoteCount] = useState(upvotes)
 
@@ -22,10 +23,11 @@ const SuggestionUpVoter = ({ upvotes }: Props) => {
   }
 
   const buttonActiveClass = isActive ? 'suggestion-upvoter_button--active' : ''
+  const layoutModifierClass = horizontalLayout ? 'suggestion-upvoter_button--horizontal' : ''
 
   return (
     <button
-      className={`suggestion-upvoter_button ${buttonActiveClass}`}
+      className={`suggestion-upvoter_button ${buttonActiveClass} ${layoutModifierClass}`}
       onClick={clickHandler}>
       <div className='suggestion-upvoter_icon-container'>
         <UpIcon />

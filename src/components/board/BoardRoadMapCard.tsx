@@ -1,6 +1,7 @@
 import { filterGroupBy } from '../../utils/filterGroupBy'
 import { useContext } from 'react'
 import { SuggestionsContext, SuggestionsContextType } from '../../store/SuggestionsProvider'
+import { Link } from 'react-router-dom'
 
 import './BoardRoadMapCard.scss'
 import BoardRoadMapCardStatusItem from './BoardRoadMapCardStatusItem'
@@ -13,7 +14,7 @@ const BoardRoadMapCard = () => {
   return <div className='board-roadmap-card_container'>
     <div className='board-roadmap-card_heading'>
       <h3>Roadmap</h3>
-      <a href="">View</a>
+      <Link to={'/roadmap'}>View</Link>
     </div>
     {
       groups.length > 0 && <BoardRoadMapCardStatusItem groups={groups} />

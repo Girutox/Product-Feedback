@@ -16,11 +16,11 @@ export const handlers = [
     ])
   }),
   http.get('https://frontendmentor.com/getStatuses', () => {
-    return HttpResponse.json<{ statusName: string }[]>([
-      { statusName: 'planned' },
-      { statusName: 'suggestion' },
-      { statusName: 'live' },
-      { statusName: 'in-progress' }
+    return HttpResponse.json<{ statusName: string, statusDescription: string }[]>([
+      { statusName: 'planned', statusDescription: 'Ideas prioritized for research' },
+      { statusName: 'suggestion', statusDescription: 'Suggestions submitted to the team' },
+      { statusName: 'live', statusDescription: 'Released features' },
+      { statusName: 'in-progress', statusDescription: 'Currently being developed' }
     ])
   }),
 ]

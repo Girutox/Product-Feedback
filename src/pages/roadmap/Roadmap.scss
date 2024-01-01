@@ -1,0 +1,47 @@
+@use '../../assets/styles/index.scss' as *;
+
+.roadmap_main-container {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+
+  gap: 75px;
+}
+
+.roadmap_header-toolbar {
+  background-color: $info;
+  color: $white;
+  border-radius: $base-border-radius;
+  padding: 27px 32px;
+  width: 100%;
+
+  display: flex;
+  flex-direction: column;
+
+  max-height: 113px;
+
+  span {
+    color: $white;
+  }
+
+  a:hover {
+    text-decoration: underline;
+    color: $white;
+  }
+}
+
+.roadmap_title-container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.roadmap_columnns-container {
+  display: flex;
+  justify-content: flex-start;
+  flex-wrap: wrap;
+  align-content: flex-start;
+
+  gap: 30px;
+}
