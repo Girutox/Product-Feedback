@@ -25,7 +25,7 @@ const SuggestionItem = ({ suggestion }: { suggestion: ProductRequest }) => {
       {
         width > screenSizes.mobileMaximun &&
         <>
-          <SuggestionUpVoter upvotes={suggestion.upvotes} />
+          <SuggestionUpVoter suggestionId={suggestion.id} upvotes={suggestion.upvotes} />
           <div className='suggestion-item_info-container' onClick={suggestionItemClickHandler}>
             <h3>{suggestion.title}</h3>
             <p className='suggestion-item_description'>{suggestion.description}</p>
@@ -45,7 +45,7 @@ const SuggestionItem = ({ suggestion }: { suggestion: ProductRequest }) => {
             <CategoryButton disabled>{suggestion.category}</CategoryButton>
           </div>
           <div className='suggestion-item_comment-container'>
-            <SuggestionUpVoter upvotes={suggestion.upvotes} />
+            <SuggestionUpVoter suggestionId={suggestion.id} upvotes={suggestion.upvotes} />
             <SuggestionsCommentCounter onClick={commentDetailsClickHandler} commentCount={suggestion.comments?.length ?? 0} />
           </div>
         </>

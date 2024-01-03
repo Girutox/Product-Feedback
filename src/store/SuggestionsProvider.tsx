@@ -16,6 +16,7 @@ export type SuggestionsContextType = {
 
   addComment: (suggestionId: number, comment: Comment) => void,
   addReply: (suggestionId: number, commentId: number, reply: Reply) => void,
+  changeVoteCount: (suggestionId: number, voteCount: number) => void
 }
 
 export const SuggestionsContext = createContext<SuggestionsContextType>({} as SuggestionsContextType)
@@ -48,6 +49,18 @@ const SuggestionsProvider = ({ children }: SuggestionsProviderProps) => {
 
   const changeSuggestionsCount = (suggestionsCount: number) => {
     setSuggestionsCount(suggestionsCount)
+  }
+
+  const changeVoteCount = (suggestionId: number, voteCount: number) => {
+    const suggestionItem = suggestions.find(item => item.id === suggestionId)
+    if (suggestionItem) {
+      suggestionItem.upvotes = voteCount
+
+      const updatedSuggestions = suggestions.map(item => item.id === suggestionId ? suggestionItem : item)
+
+      localStorage.setItem('suggestions', JSON.stringify(updatedSuggestions))
+      setSuggestions(updatedSuggestions)
+    }
   }
 
   const addSuggestion = (suggestion: IFormValues) => {
@@ -130,7 +143,8 @@ const SuggestionsProvider = ({ children }: SuggestionsProviderProps) => {
     updateSuggestion,
     deleteSuggestion,
     addComment,
-    addReply
+    addReply,
+    changeVoteCount
   }
 
   return (

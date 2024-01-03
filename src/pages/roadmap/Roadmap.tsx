@@ -23,6 +23,10 @@ const Roadmap = () => {
     navigate(-1)
   }
 
+  const addFeedbackClickHandler = () => {
+    navigate('/manageFeedBack')
+  }
+
   return (
     <>
       <main className='roadmap_main-container'>
@@ -35,7 +39,7 @@ const Roadmap = () => {
           </nav>
           <div className='roadmap_title-container'>
             <h1>Roadmap</h1>
-            <Button actionType={ButtonActionType.ADD}>+ Add Feedback</Button>
+            <Button actionType={ButtonActionType.ADD} onClick={addFeedbackClickHandler}>+ Add Feedback</Button>
           </div>
         </header>
         <section className='roadmap_columnns-container'>

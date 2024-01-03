@@ -1,24 +1,32 @@
-import { useState } from 'react'
+import { useContext, useState } from 'react'
 import UpIcon from '../../../UI/UpIcon'
 
 import './SuggestionUpVoter.scss'
+import { SuggestionsContext, SuggestionsContextType } from '../../../../store/SuggestionsProvider'
 
 type Props = {
+  suggestionId: number,
   upvotes: number,
   horizontalLayout?: boolean
 }
 
-const SuggestionUpVoter = ({ upvotes, horizontalLayout = false }: Props) => {
+const SuggestionUpVoter = ({ suggestionId, upvotes, horizontalLayout = false }: Props) => {
   const [isActive, setIsActive] = useState(false)
   const [upvoteCount, setUpvoteCount] = useState(upvotes)
 
+  const { changeVoteCount } = useContext(SuggestionsContext) as SuggestionsContextType
+
   const clickHandler = () => {
+    let newValue = 0
+
     if (isActive) {
-      setUpvoteCount(upvoteCount - 1)
+      newValue = upvoteCount - 1
     } else {
-      setUpvoteCount(upvoteCount + 1)
+      newValue = upvoteCount + 1
     }
 
+    setUpvoteCount(newValue)
+    changeVoteCount(suggestionId, newValue)
     setIsActive(!isActive)
   }
 
